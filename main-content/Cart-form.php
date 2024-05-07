@@ -97,7 +97,7 @@
    <div class="container-fluid">
      <div class="row">
        <div class="col-md-12">
-        <?php include('progressbar.php')?>
+        <?php include('common/progressbar.php')?>
          <div class="clear" style="margin-bottom:1%"></div>
          <table style="text-align:center;width: 100%;border-collapse: collapse;" border="1">
            <thead>

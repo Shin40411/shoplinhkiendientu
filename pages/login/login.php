@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Linh kiện e-shop | Đăng nhập</title>
-    <link rel="shortcut icon" type="image/icon" href="../assets/logo/favicon.png" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/login.css">
+    <link rel="shortcut icon" type="image/icon" href="../../assets//logo/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/login.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -16,7 +16,7 @@
 <body>
     <div class="wrapper">
         <div class="back-to-home">
-            <a href="../index.php" class="comeback">
+            <a href="../../index.php" class="comeback">
                 <i class="fa fa-arrow-left"></i>
                 Quay lại</a>
         </div>
@@ -63,7 +63,7 @@
     </div>
 
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src="../assets/js/login.js"></script>
+    <script src="../../assets/js/login.js"></script>
 </body>
 
 </html>

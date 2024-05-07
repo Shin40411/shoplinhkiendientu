@@ -80,8 +80,12 @@ include('header.php');
 									?>
 										<tr>
 											<td style="text-align:center"><?php echo ++$firstIndex ?></td>
-											<td><img src="<?php echo 'uploads/'. $item['thumbnail'] ?>" class="avatar avatar-lg me-3 border-radius-lg" style="max-width: 100px"></td>
-											<td><?php echo $item['title'] ?></td>
+											<td><img src="<?php echo 'uploads/' . $item['thumbnail'] ?>" class="avatar avatar-lg me-3 border-radius-lg" style="max-width: 100px"></td>
+											<td>
+												<p>
+													<?php echo $item['title'] ?>
+												</p>
+											</td>
 											<td><?php echo number_format($item['price'], 0, ',', '.') . ' vnđ' ?></td>
 											<td><?php echo $item['category_name'] ?></td>
 											<td><?php echo $item['updated_at'] ?></td>
@@ -92,9 +96,9 @@ include('header.php');
 												<?php
 												if ($item['status_pro'] == 0) {
 												?>
-													<a href="stocking.php?outstock=<?php echo $item['id'] ?>"> <span class="badge badge-sm bg-gradient-secondary" style="margin-bottom:22px">Hết hàng</span> </a>
+													<a href="stocking.php?outstock=<?php echo $item['id'] ?>"> <span class="badge badge-sm bg-gradient-secondary" style="margin-bottom:22px">Hàng khuyến mãi</span> </a>
 												<?php } else { ?>
-													<a href="stocking.php?stock=<?php echo $item['id'] ?>"> <span class="badge badge-sm bg-gradient-success" style="margin-bottom:22px">Còn hàng</span> </a>
+													<a href="stocking.php?stock=<?php echo $item['id'] ?>"> <span class="badge badge-sm bg-gradient-success" style="margin-bottom:22px">Hàng thường</span> </a>
 												<?php } ?>
 											</td>
 											<td>

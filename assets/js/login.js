@@ -22,7 +22,7 @@ var working = false;
             $this.addClass('ok');
             $state.html('Chào mừng bạn trở lại!');
             setTimeout(function () {
-              window.location = "../index.php";
+              window.location = "../../index.php";
               $state.html('Đăng nhập');
               $this.removeClass('ok loading');
               working = false;

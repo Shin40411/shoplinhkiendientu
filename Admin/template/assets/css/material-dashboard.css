@@ -17539,3 +17539,9 @@ pre[class*="language-"] {
 .bg-login {
   background: linear-gradient(to right, #00004c, rgba(0, 0, 0, 0)), url(https://grainy-gradients.vercel.app/noise.svg);
 }
+td > p {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 500px;
+  text-overflow: ellipsis;
+}

@@ -89,7 +89,7 @@ if (isset($_GET['getCartSummary'])) {
 			$cart_html .= '</td>';
 			$cart_html .= '<td style="vertical-align: middle; text-align:center">' . number_format($cart_item['price'], 0, ',', '.') . 'vnđ</td>';
 			$cart_html .= '<td style="vertical-align: middle; text-align:center">' . $cart_item['id'] . '</td>';
-			$cart_html .= '<td style="vertical-align: middle;"><img class="img img-responsive" width="100%" src="' . $cart_item['thumbnail'] . '"></td>';
+			$cart_html .= '<td style="vertical-align: middle;"><img class="img img-responsive" width="100%" src="' . 'Admin/template/pages/uploads/' . $cart_item['thumbnail'] . '"></td>';
 			$cart_html .= '<td style="vertical-align: middle; text-align:center">' . number_format($thanhtien, 0, ',', '.') . '.đ</td>';
 			$cart_html .= '<td style="vertical-align: middle; text-align:center"><a class="removeitem h5" href="javascript:void(0);" onclick="removeFromCart(' . $cart_item['id'] . ')"><i class="fa fa-trash"></i></a></td>';
 			$cart_html .= '</tr>';

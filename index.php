@@ -2,7 +2,7 @@
 session_start();
 ?>
 <?php
-include('header.php');
+include('layout/header.php');
 require_once('db/dbhelper.php');
 require_once('common/utility.php');
 $id = '';
@@ -19,65 +19,23 @@ if (isset($_GET['id'])) {
 ?>
 
 <body>
-  <section id="home" class="welcome-hero">
 
-    <!-- top-area Start -->
-    <?php
-    include('menu.php');
-    ?>
-    <!-- top-area End -->
-
-    <div class="container">
-      <div class="welcome-hero-txt">
-        <h2>Nơi uy tính cho mọi nhà</h2>
-        <p>
-          Khám phá thế giới kỹ thuật số với linh kiện điện tử chất lượng cao, tạo nên những dự án sáng tạo không giới hạn. Hãy đến với chúng tôi và biến ý tưởng của bạn thành hiện thực!
-        </p>
-        <button class="welcome-btn" onclick="window.location.href='#'">Liên hệ</button>
-      </div>
-    </div>
-
-    <div class="container">
-      <?php include('common/sort.php'); ?>
-    </div>
-
-  </section>
-
-  <!--service start -->
-  <?php include('main-content/service.php'); ?>
-  <!--service end-->
-
-  <!--coupons start -->
-  <?php include('main-content/coupons.php'); ?>
-  <!--coupons end -->
-
-  <!--featured start -->
+  <!-- top-area Start -->
   <?php
-  include('main-content/main-content.php');
+  include('layout/menu.php');
   ?>
-  <!--featured end -->
 
-  <!-- clients-say strat -->
-  <?php
-  include('main-content/feedback.php');
-  ?>
-  <!-- clients-say end -->
+  <div id="app">
+    <?php include('Pages/home.php') ?>
+  </div>
 
-  <!--brand strat -->
-  <?php
-  include('main-content/brand.php');
-  ?>
-  <!--brand end -->
+  <?php include('layout/footer.php'); ?>
 
-  <!--blog start -->
-  <section id="blog" class="blog"></section>
-  <!--blog end -->
+  <script src="assets/js/layout.js"></script>
 
-  <?php include('footer.php'); ?>
+  <script src="assets/js/cart/cart.js"></script>
 
-  <script src="assets/js/cart/cart.js" ></script>
-
-  <script src="assets/js/logout.js" ></script>
+  <script src="assets/js/logout.js"></script>
 
   <script src="assets/js/jquery.js"></script>
 

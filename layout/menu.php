@@ -20,7 +20,7 @@ $query_category = mysqli_query($con, $sql_category);
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
             <i class="fa fa-bars"></i>
           </button>
-          <a class="navbar-brand" href="index.html">linh kiện e-shop<span></span></a>
+          <a class="navbar-brand" href="index.php">linh kiện e-shop<span></span></a>
 
         </div><!--/.navbar-header-->
         <!-- End Header Navigation -->
@@ -57,7 +57,7 @@ $query_category = mysqli_query($con, $sql_category);
             <?php
             } else {
             ?>
-              <li><a href="login/login.php">Đăng nhập</a></li>
+              <li><a href="pages/login/login.php">Đăng nhập</a></li>
             <?php
             }
             ?>

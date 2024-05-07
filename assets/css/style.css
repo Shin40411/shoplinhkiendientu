@@ -72,7 +72,7 @@ p {
     line-height: 1.8;
     text-transform: initial;
 }
-img{border:none;max-width:100%; height:auto;}
+img{border:none;max-width:100%; height:100%;}
 ul{
 	padding: 0;
     margin: 0 auto;

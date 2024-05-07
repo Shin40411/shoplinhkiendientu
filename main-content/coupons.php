@@ -16,7 +16,7 @@
               <div class="row">
                 <div class="col-md-7 col-sm-12">
                   <div class="new-cars-img">
-                  <img src="<?php echo $item['thumbnail'] ?>">
+                  <img src="<?php echo 'Admin/template/pages/uploads/'. $item['thumbnail'] ?>">
                   </div><!--/.new-cars-img-->
                 </div>
                 <div class="col-md-5 col-sm-12">
