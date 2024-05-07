@@ -1,5 +1,5 @@
 <?php 
-    include('../../../db/dbhelper.php');
+    include('../../../config/dbhelper.php');
 
     if( $_GET['stock']){
 

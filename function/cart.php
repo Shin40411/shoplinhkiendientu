@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('db/dbhelper.php');
+include('../config/dbhelper.php');
 $products = array();
 
 //themsoluong
@@ -81,11 +81,11 @@ if (isset($_GET['getCartSummary'])) {
 			$i++;
 			$cart_html .= '<tr>';
 			$cart_html .= '<td style="vertical-align: middle; text-align:center">' . $i . '</td>';
-			$cart_html .= '<td style="vertical-align: middle; text-align:center">' . $cart_item['title'] . '</td>';
+			$cart_html .= '<td style="vertical-align: middle; text-align:center"><p>' . $cart_item['title'] . '</p></td>';
 			$cart_html .= '<td style="vertical-align: middle; text-align:center">';
-			$cart_html .= '<a href="javascript:void(0);" id="addcount" style="font-size:unset;padding:5px" onclick="updateCart(' . $cart_item['id'] . ', \'cong\')"><i class="fa fa-plus fa-style" aria-hidden="true"></i></a>';
+			$cart_html .= '<a href="javascript:void(0);" id="addcount" class="increasenumber" style="font-size:unset;padding:5px" onclick="updateCart(' . $cart_item['id'] . ', \'cong\')"><i class="fa fa-plus fa-style" aria-hidden="true"></i></a>';
 			$cart_html .= $cart_item['soluong'];
-			$cart_html .= '<a href="javascript:void(0);" id="minuscount" style="font-size:unset;padding:5px" onclick="updateCart(' . $cart_item['id'] . ', \'tru\')"><i class="fa fa-minus fa-style" aria-hidden="true"></i></a>';
+			$cart_html .= '<a href="javascript:void(0);" id="minuscount" class="decreasenumber" style="font-size:unset;padding:5px" onclick="updateCart(' . $cart_item['id'] . ', \'tru\')"><i class="fa fa-minus fa-style" aria-hidden="true"></i></a>';
 			$cart_html .= '</td>';
 			$cart_html .= '<td style="vertical-align: middle; text-align:center">' . number_format($cart_item['price'], 0, ',', '.') . 'vnđ</td>';
 			$cart_html .= '<td style="vertical-align: middle; text-align:center">' . $cart_item['id'] . '</td>';

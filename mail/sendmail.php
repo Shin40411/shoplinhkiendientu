@@ -25,9 +25,6 @@ class Mailer{
 	   
 	    $mail->setFrom('htho40702@gmail.com', 'Mailer');
 	    $mail->addAddress($maildathang, 'Shin');     
-	    // $mail->addAddress('dhtho1800016@student.ctuet.edu.vn', 'Thọ');               
-	  
-	   
 	    $mail->addCC('htho40702@gmail.com');
 	    
 	    //Content

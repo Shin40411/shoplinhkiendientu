@@ -1,5 +1,5 @@
 <?php
-require_once('db/dbhelper.php');
+require_once('config/dbhelper.php');
 ?>
 <!doctype html>
 <html class="no-js" lang="en">

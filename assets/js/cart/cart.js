@@ -1,6 +1,6 @@
 function addToCart(itemId) {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "cart.php?id=" + itemId, true);
+    xhr.open("POST", "function/cart.php?id=" + itemId, true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhr.onreadystatechange = function () {
@@ -23,7 +23,7 @@ function addToCart(itemId) {
 
 function updateCartSummary() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "cart.php?getCartSummary=1", true);
+    xhr.open("GET", "function/cart.php?getCartSummary=1", true);
     xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.onreadystatechange = function () {
@@ -57,7 +57,7 @@ updateCartSummary();
 
 function updateCart(itemId, action) {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "cart.php?" + action + "=" + itemId, true);
+    xhr.open("GET", "function/cart.php?" + action + "=" + itemId, true);
 
     xhr.onreadystatechange = function () {
         xhr.responseText;
@@ -75,7 +75,7 @@ function updateCart(itemId, action) {
 
 function removeFromCart(itemId) {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "cart.php?xoa=" + itemId, true);
+    xhr.open("GET", "function/cart.php?xoa=" + itemId, true);
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -99,7 +99,7 @@ function removeFromCart(itemId) {
 
 function removeAllFromCart() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "cart.php?xoatatca=1");
+    xhr.open("GET", "function/cart.php?xoatatca=1");
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -132,7 +132,10 @@ function shipping() {
                 goToStep(1);
                 loadShippingPage();
                 document.getElementById('changeStep').innerHTML = '';
-                document.querySelector('.removeitem').innerHTML = '';
+                var trashcan = document.querySelectorAll('.removeitem');
+                trashcan.forEach((trash, index) => {
+                    trash.innerHTML = '';
+                });
                 document.querySelector('.removeitems').innerHTML = '';
             }, 4000);
         } else {
@@ -142,28 +145,21 @@ function shipping() {
 }
 
 function checkSession(callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'checksessionlogin.php', true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                if (xhr.responseText === "1") {
-                    callback(true);
-                } else {
-                    callback(false);
-                }
-            } else {
-                console.error("Error:", xhr.statusText);
-                callback(false);
-            }
-        }
-    };
-    xhr.send();
+    // var xhr = new XMLHttpRequest();
+    // xhr.open('GET', 'function/checksessionlogin.php', true);
+    // xhr.onreadystatechange = function () {
+    if (document.getElementById('loginsession').value != "") {
+        callback(true);
+    } else {
+        callback(false);
+    }
+    // };
+    // xhr.send();
 }
 
 function loadShippingPage() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'shipping.php', true);
+    xhr.open('GET', 'function/shipping.php', true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
@@ -200,7 +196,7 @@ function updateShipping(actions) {
     }
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "shipping.php");
+    xhr.open("POST", "function/shipping.php");
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhr.onreadystatechange = function () {
@@ -234,8 +230,14 @@ function nextpaystep() {
     setTimeout(function () {
         goToStep(2);
         document.getElementById('submitbutt').innerHTML = '';
-        document.getElementById('addcount').innerHTML = '';
-        document.getElementById('minuscount').innerHTML = '';
+        var increase = document.querySelectorAll('.increasenumber');
+        increase.forEach((ic) => {
+            ic.innerHTML = '';
+        });
+        var decrease = document.querySelectorAll('.decreasenumber');
+        decrease.forEach((dc) => {
+            dc.innerHTML = '';
+        });
 
         fullname.disabled = true;
         phone_number.disabled = true;
@@ -247,13 +249,18 @@ function nextpaystep() {
 
 function loadPaymentPage() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'billinfo.php', true);
+    xhr.open('GET', 'function/billinfo.php', true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
                 if (response && response.formpay) {
                     document.getElementById('payment').innerHTML = response.formpay;
+                    var cardholder = document.getElementById('cardholder');
+                    if (cardholder){
+                        var getname =  document.getElementById('fullname');
+                        cardholder.value = unmark(getname.value);
+                    }
                 } else {
                     console.error("Invalid response from server:", response);
                 }
@@ -263,6 +270,57 @@ function loadPaymentPage() {
         }
     };
     xhr.send();
+}
+
+function pay() {
+    var checkout = document.getElementById('redirect');
+    var payment = document.getElementById('carddetails').value;
+    var paymentdate = document.getElementById('paymentdate').value;
+    var paymentcvv = document.getElementById('paymentcvv').value;
+
+    var datasend = {
+        payment: payment,
+        paymentdate: paymentdate,
+        paymentcvv: paymentcvv
+    }
+
+    if (payment === "" || paymentdate === "" || paymentcvv === "") {
+        return;
+    }
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "function/xulythanhtoan.php");
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200 && xhr.responseText != "") {
+                var success = JSON.parse(xhr.responseText);
+                checkout.innerHTML = '<i class="fa fa-spinner fa-spin" style="font-size:16px"></i> Vui lòng chờ...';
+                setTimeout(function () {
+                    if (success.result == true) {
+                        checkout.innerHTML = '<i class="fa fa-check-circle-o" style="font-size:16px"></i> Thanh toán thành công';
+                        checkout.style.background = 'green';
+                        setTimeout(function(){
+                            document.getElementById('carttable').innerHTML = "";
+                            document.getElementById('shipping').innerHTML = "";
+                            document.getElementById('payment').innerHTML = "";
+                        }, 2000);
+                        
+                    } else {
+                        checkout.innerHTML = '<i class="fa fa-close" style="font-size:16px"></i> Thanh toán thất bại';
+                        setTimeout(function () {
+                            checkout.innerHTML = 'Thanh toán ngay';
+                        },2000);
+                    }
+                }, 4000);
+            } else {
+                console.error(xhr.status);
+            }
+        } else {
+            console.error(xhr.status);
+        }
+    };
+    xhr.send(JSON.stringify(datasend));
 }
 
 const steps = document.querySelectorAll('#progressbarcart .step');
@@ -304,17 +362,39 @@ function backtoFirstState() {
     goToStep(0);
     var changeS = document.getElementById('changeStep');
     if (changeS) changeS.innerHTML = '<button class="btn btn-success">Thanh toán</button>';
-    var addS = document.getElementById('addcount');
-    if (addS) addS.innerHTML = '<i class="fa fa-plus fa-style" aria-hidden="true"></i>';
-    var minusS = document.getElementById('minuscount');
-    if (minusS) minusS.innerHTML = '<i class="fa fa-minus fa-style" aria-hidden="true"></i>';
-    var delS = document.querySelector('.removeitem');
-    if (delS) delS.innerHTML = '<i class="fa fa-trash"></i>';
+
+    var increase = document.querySelectorAll('.increasenumber');
+    increase.forEach((ic) => {
+        ic.innerHTML = '<i class="fa fa-plus fa-style" aria-hidden="true"></i>';
+    });
+    var decrease = document.querySelectorAll('.decreasenumber');
+    decrease.forEach((dc) => {
+        dc.innerHTML = '<i class="fa fa-minus fa-style" aria-hidden="true"></i>';
+    });
+
+    var trashcan = document.querySelectorAll('.removeitem');
+    trashcan.forEach((trash, index) => {
+        trash.innerHTML = '<i class="fa fa-trash"></i>';
+    });
+
     var delAS = document.querySelector('.removeitems');
     if (delAS) delAS.innerHTML = '<i class="fa fa-trash"></i> Xóa tất cả';
     document.getElementById('shipping').innerHTML = '';
     document.getElementById('payment').innerHTML = '';
 }
+
+function unmark(str) {
+    str = str.toLowerCase();
+    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+    str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+    str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+    str = str.replace(/đ/g, "d");
+    str = str.toUpperCase();
+    return str;
+  }
 
 var modal = document.getElementById('cart');
 modal.addEventListener('click', function (event) {

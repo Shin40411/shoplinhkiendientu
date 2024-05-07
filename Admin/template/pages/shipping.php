@@ -6,7 +6,7 @@ if(!isset($_SESSION['login'])){
 ?>
 <?php
 include ('header.php');
-require_once ('../../../db/dbhelper.php');
+require_once ('../../../config/dbhelper.php');
 require_once ('../../../common/utility.php');
 ?>
 <?php 

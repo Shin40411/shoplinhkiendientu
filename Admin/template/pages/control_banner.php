@@ -1,5 +1,5 @@
 <?php
-include('../../../db/dbhelper.php');
+include('../../../config/dbhelper.php');
 
 //xuly hinh anh 1
 $hinhanh = $_FILES['hinhanh']['name'];

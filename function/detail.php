@@ -2,8 +2,8 @@
 session_start();
 ?> 
 <?php 
-include ('header.php');
-require_once ('db/dbhelper.php');
+include ('layout/header.php');
+require_once ('../config/dbhelper.php');
 $id='';
 if(isset($_GET['id'])){
     $id = $_GET['id'];

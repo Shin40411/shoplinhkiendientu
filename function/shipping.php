@@ -33,7 +33,7 @@ if (isset($_SESSION['id_khachhang'])) {
       $shippinghtml .= ' <div class="row">';
       $shippinghtml .= '   <div id="main-products">';
       $shippinghtml .= '     <div class="main-detail">';
-      $shippinghtml .= '       <h3 style="text-align: center;">Thông tin giao hàng</h3>';
+      $shippinghtml .= '       <h3 style="text-align: center;">Thông tin thanh toán</h3>';
       $shippinghtml .= '       <div class="container-fluid">';
       $shippinghtml .= '         <div class="row">';
       $shippinghtml .= '           <div class="col-md-12">';

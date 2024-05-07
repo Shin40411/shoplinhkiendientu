@@ -5,7 +5,7 @@ if(!isset($_SESSION['login'])){
 }
 ?>
 <?php
-require_once ('../../../db/dbhelper.php');
+require_once ('../../../config/dbhelper.php');
 $id_admin = $username = $name = $role = '';
 if(!empty($_POST)) {
 	if(isset($_POST['username'])) {

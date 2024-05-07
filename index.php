@@ -3,7 +3,7 @@ session_start();
 ?>
 <?php
 include('layout/header.php');
-require_once('db/dbhelper.php');
+require_once('config/dbhelper.php');
 require_once('common/utility.php');
 $id = '';
 if (isset($_GET['id'])) {
@@ -26,7 +26,7 @@ if (isset($_GET['id'])) {
   ?>
 
   <div id="app">
-    <?php include('Pages/home.php') ?>
+    <?php include('pages/home.php') ?>
   </div>
 
   <?php include('layout/footer.php'); ?>

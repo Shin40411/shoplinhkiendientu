@@ -5,7 +5,7 @@ if(!isset($_SESSION['login'])){
 }
 ?>
 <?php
-require_once ('../../../db/dbhelper.php');
+require_once ('../../../config/dbhelper.php');
 $con=mysqli_connect("localhost","root","","eshop");
 	$sql_lietkebanner = mysqli_query($con,"SELECT * FROM banner");
 ?>

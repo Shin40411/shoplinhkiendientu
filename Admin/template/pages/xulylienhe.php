@@ -1,5 +1,5 @@
 <?php
-require_once ('../../../db/dbhelper.php');
+require_once ('../../../config/dbhelper.php');
 
 $thongtinlienhe = $_POST['thongtinlienhe'];
 $id = $_GET['id'];

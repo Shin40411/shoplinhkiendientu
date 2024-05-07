@@ -1,5 +1,5 @@
 <?php
-include('../../../db/dbhelper.php');
+include('../../../config/dbhelper.php');
 
 $tenbaiviet = $_POST['tenbaiviet'];
 //xuly hinh anh

@@ -35,7 +35,7 @@ $query_category = mysqli_query($con, $sql_category);
             <!-- <li class="scroll"><a href="#brand">thương hiệu</a></li> -->
             <?php
             if (isset($_SESSION['dangky'])) {
-            ?>             
+            ?>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                   <span style="color:yellow;font-size:unset">
@@ -46,10 +46,13 @@ $query_category = mysqli_query($con, $sql_category);
                 <div class="dropdown-menu" style="min-width: 200px;" aria-labelledby="navbarDropdown">
                   <ul class="list-group">
                     <li class="list-group-item">
+                      <a href="#" style="font-size: unset;"><i class="fa fa-user-circle-o"></i> Tài khoản của tôi</a>
+                    </li>
+                    <li class="list-group-item">
                       <a href="lichsudonhang.php" style="font-size: unset;"><i class="fa fa-cart-arrow-down"></i> Lịch sử đơn hàng</a>
                     </li>
                     <li class="list-group-item">
-                    <a class="dropdown-item" style="font-size: unset;" onclick="logout()" href="javascript:void(0);"><i class="fa fa-sign-out"></i> Đăng xuất tài khoản</a>
+                      <a class="dropdown-item" style="font-size: unset;" onclick="logout()" href="javascript:void(0);"><i class="fa fa-sign-out"></i> Đăng xuất tài khoản</a>
                     </li>
                   </ul>
                 </div>
@@ -75,11 +78,12 @@ $query_category = mysqli_query($con, $sql_category);
     <!-- End Navigation -->
   </div>
   <div class="clearfix"></div>
+  <input type="hidden" id="loginsession" value='<?php echo $_SESSION['dangky'] ?>'>
   <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <?php
-        include('Cart-form/Cart-form.php');
+        include('content/Cart-form.php');
         ?>
       </div>
     </div>

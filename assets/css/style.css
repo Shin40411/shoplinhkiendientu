@@ -961,3 +961,35 @@ div#payment > div {
 .list-group-item:first-child{
     border: none;
 }
+
+tbody#cartbodies p {
+    overflow: hidden;
+    /* white-space: nowrap; */
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.iconinside {
+    position: absolute;
+    padding: 10px;
+    top: 90px;
+    min-width: 40px;
+}
+
+.carddetails{
+    display: flex;
+    border: 1px solid #ddd;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
+.carddetails input {
+    border: none;
+}
+
+.carddetails input:focus{
+    border: none !important;
+    box-shadow: none;
+}
