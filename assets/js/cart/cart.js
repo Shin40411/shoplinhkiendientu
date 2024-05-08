@@ -40,7 +40,10 @@ function updateCartSummary() {
                     } else {
                         document.getElementById('item-count').innerText = 0;
                         document.getElementById('progressbarcart').style.display = "none";
-                        document.getElementById('cartbodies').innerHTML = '<td colspan="8"><p style="line-height:43px;">Chưa có sản phẩm!</p></td>';
+                        var carbody = document.getElementById('cartbodies');
+                        if (carbody){
+                            carbody.innerHTML = '<td colspan="8"><p style="line-height:43px;">Chưa có sản phẩm!</p></td>';
+                        }
                         cartButton.style.animationName = 'none';
                     }
                 }
@@ -207,7 +210,6 @@ function updateShipping(actions) {
                     document.getElementById('notification').innerHTML = '<div class="d-flex justify-content-center panel-footer"><span class="h5 text-success">Cập nhật thông tin thành công!</span></div>';
                     setTimeout(() => {
                         loadShippingPage();
-
                     }, 3000);
                 }, 4000);
             } else {
@@ -257,8 +259,8 @@ function loadPaymentPage() {
                 if (response && response.formpay) {
                     document.getElementById('payment').innerHTML = response.formpay;
                     var cardholder = document.getElementById('cardholder');
-                    if (cardholder){
-                        var getname =  document.getElementById('fullname');
+                    if (cardholder) {
+                        var getname = document.getElementById('fullname');
                         cardholder.value = unmark(getname.value);
                     }
                 } else {
@@ -278,6 +280,8 @@ function pay() {
     var paymentdate = document.getElementById('paymentdate').value;
     var paymentcvv = document.getElementById('paymentcvv').value;
 
+    document.getElementById('paynoti').innerHTML = '';
+
     var datasend = {
         payment: payment,
         paymentdate: paymentdate,
@@ -285,6 +289,7 @@ function pay() {
     }
 
     if (payment === "" || paymentdate === "" || paymentcvv === "") {
+        document.getElementById('paynoti').innerHTML = '<div class="d-flex justify-content-center panel-footer" style="margin-top:30px"><span class="h5 text-danger">Vui lòng nhập đầy đủ thông tin!</span></div>';
         return;
     }
 
@@ -300,27 +305,50 @@ function pay() {
                     if (success.result == true) {
                         checkout.innerHTML = '<i class="fa fa-check-circle-o" style="font-size:16px"></i> Thanh toán thành công';
                         checkout.style.background = 'green';
-                        setTimeout(function(){
-                            document.getElementById('carttable').innerHTML = "";
-                            document.getElementById('shipping').innerHTML = "";
-                            document.getElementById('payment').innerHTML = "";
+                        setTimeout(function () {
+                            loadOrdersPage();
                         }, 2000);
-                        
+
                     } else {
                         checkout.innerHTML = '<i class="fa fa-close" style="font-size:16px"></i> Thanh toán thất bại';
                         setTimeout(function () {
                             checkout.innerHTML = 'Thanh toán ngay';
-                        },2000);
+                        }, 2000);
                     }
                 }, 4000);
             } else {
-                console.error(xhr.status);
+                console.error(xhr.responseText);
             }
         } else {
-            console.error(xhr.status);
+            console.error(xhr.responseText);
         }
     };
     xhr.send(JSON.stringify(datasend));
+}
+
+function loadOrdersPage() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                updateCartSummary();
+                var ordersHTML = JSON.parse(xhr.responseText);
+                if (ordersHTML && ordersHTML.renderorder){
+                    goToStep(3);
+                    document.getElementById('carttable').innerHTML = "";
+                    document.getElementById('shipping').innerHTML = "";
+                    document.getElementById('payment').innerHTML = "";
+                    document.getElementById('orderhistory').innerHTML = ordersHTML.renderorder;
+                }else{
+                    console.error('Error fetching orders: ' + xhr.responseText);
+                }
+            } else {
+                console.error('Error fetching orders: ' + xhr.responseText);
+            }
+        }
+    };
+    xhr.open('GET', 'function/orderdetail.php', true);
+    xhr.send();
 }
 
 const steps = document.querySelectorAll('#progressbarcart .step');
@@ -381,6 +409,7 @@ function backtoFirstState() {
     if (delAS) delAS.innerHTML = '<i class="fa fa-trash"></i> Xóa tất cả';
     document.getElementById('shipping').innerHTML = '';
     document.getElementById('payment').innerHTML = '';
+    document.getElementById('orderhistory').innerHTML = '';
 }
 
 function unmark(str) {
@@ -394,7 +423,7 @@ function unmark(str) {
     str = str.replace(/đ/g, "d");
     str = str.toUpperCase();
     return str;
-  }
+}
 
 var modal = document.getElementById('cart');
 modal.addEventListener('click', function (event) {

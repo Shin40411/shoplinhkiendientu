@@ -52,9 +52,15 @@
             <div class="container__overlay">
                 <div class="overlay">
                     <div class="overlay__panel overlay--left">
+                        <div class="d-flex">
+                            <h3 class="animate-charcter"><i>Linh kiện E-shop</i></h3>
+                        </div>
                         <button class="btn" id="signIn">Đăng nhập tài khoản</button>
                     </div>
                     <div class="overlay__panel overlay--right">
+                        <div class="d-flex">
+                            <h3 class="animate-charcter"><i>Linh kiện E-shop</i></h3>
+                        </div>
                         <button class="btn" id="signUp">Đăng ký tài khoản</button>
                     </div>
                 </div>

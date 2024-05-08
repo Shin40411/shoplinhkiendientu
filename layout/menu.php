@@ -78,7 +78,7 @@ $query_category = mysqli_query($con, $sql_category);
     <!-- End Navigation -->
   </div>
   <div class="clearfix"></div>
-  <input type="hidden" id="loginsession" value='<?php echo $_SESSION['dangky'] ?>'>
+  <input type="hidden" id="loginsession" value='<?php echo isset($_SESSION['dangky']) ? $_SESSION['dangky'] : ""  ?>'>
   <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">

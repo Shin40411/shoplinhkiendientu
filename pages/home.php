@@ -38,7 +38,7 @@ include('content/feedback.php');
 
 <!--brand strat -->
 <?php
-// include('content/brand.php');
+include('content/brand.php');
 ?>
 <!--brand end -->
 

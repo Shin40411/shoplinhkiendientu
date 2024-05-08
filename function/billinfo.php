@@ -46,6 +46,8 @@ if (isset($_SESSION['id_khachhang'])) {
     $paymenthtml .= '<p style="float: left;margin-top: 8px;"><b>Tổng cộng:</b> ' . number_format($tongtien, 0, ',', '.') . '.đ' . '</p>';
     $paymenthtml .= '<button type="button" style="width:100%" onclick="pay()" id="redirect" class="btn btn-danger">Thanh toán ngay</button>';
     $paymenthtml .= '</div>';
+    $paymenthtml .= '<div id="paynoti">';
+    $paymenthtml .= '</div>';
     $paymenthtml .= '</div>';
     $paymenthtml .= '</div>';
     $paymenthtml .= '</form>';
