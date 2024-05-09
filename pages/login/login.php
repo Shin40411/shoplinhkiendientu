@@ -1,3 +1,8 @@
+<?php
+session_start();
+if (!isset($_SESSION['dangky'])) {
+?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -22,17 +27,20 @@
         </div>
         <div class="container">
             <div class="container__form container--signup">
-                <form action="#" class="form" id="form1">
+                <form action="#" class="form signup" method="POST" id="form1">
                     <h2 class="form__title">Đăng ký tài khoản</h2>
-                    <input type="text" placeholder="Họ và tên" class="input" />
+                    <input type="text" placeholder="Họ và tên" autocomplete="off" name="hovaten" class="input" required />
                     <!-- <i class="fa fa-user"></i> -->
-                    <input type="email" placeholder="Email" class="input" />
+                    <input type="email" placeholder="Email" autocomplete="off" name="email" class="input" required />
                     <!-- <i class="fa fa-email"></i> -->
-                    <input type="address" placeholder="Địa chỉ" class="input" />
+                    <input type="address" placeholder="Địa chỉ" autocomplete="off" name="diachi" class="input" />
                     <!-- <i class="fa fa-address"></i> -->
-                    <input type="password" placeholder="Mật khẩu" class="input" />
+                    <input type="password" placeholder="Mật khẩu" name="matkhau" class="input" required />
                     <!-- <i class="fa fa-key"></i> -->
-                    <button class="btn">Đăng ký</button>
+                    <button type="submit" class="btn" name="dangky">
+                    <i class="spinner"></i>
+                    <span class="state">Đăng ký</span>
+                    </button>
                 </form>
             </div>
             <div class="container__form container--signin">
@@ -73,3 +81,10 @@
 </body>
 
 </html>
+
+<?php 
+}else{
+    header('Location: ../../index.php');
+    exit;
+}
+?>

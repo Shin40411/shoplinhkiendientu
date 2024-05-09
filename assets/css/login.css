@@ -61,27 +61,27 @@ body {
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
 } */
 
-#form2.loading button {
+#form2.loading button, #form1.loading button {
   max-height: 100%;
   padding-top: 50px;
 }
 
-#form2.loading button .spinner {
+#form2.loading button .spinner, #form1.loading button .spinner {
   opacity: 1;
   top: 40%;
 }
 
-#form2.ok button {
+#form2.ok button, #form1.ok button {
   background-color: #8bc34a!important;
   background-image: none !important;
 }
 
-#form2.error button{
+#form2.error button, #form1.error button{
   background-color: hsl(0, 94%, 50%) !important;
   background-image: none !important;
 }
 
-#form2.ok button .spinner {
+#form2.ok button .spinner, #form1.ok button .spinner {
   border-radius: 0;
   border-top-color: transparent;
   border-right-color: transparent;
@@ -170,7 +170,7 @@ body {
   border-bottom-width: 7px;
 }
 
-#form2 button .spinner {
+#form2 button .spinner, #form1 button .spinner {
   display: block;
   width: 40px;
   height: 40px;

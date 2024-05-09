@@ -16,6 +16,9 @@
 
 </section>
 <div style="margin-bottom: 100px;"></div>
+
+<div id="searchcontainer"></div>
+
 <!--service start -->
 <?php include('content/service.php'); ?>
 <!--service end-->

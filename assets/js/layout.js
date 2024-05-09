@@ -58,7 +58,6 @@ function commentsend(idpro) {
 
   var review = document.getElementById('comment');
   var sendbtn = document.getElementById('cmt');
-  sendbtn.innerHTML = '<i class="fa fa-spinner fa-spin" style="font-size:16px"></i> Vui lòng chờ...';
 
   var datasend = {
     commentmess: review.value,
@@ -79,6 +78,7 @@ function commentsend(idpro) {
       if (xhr.status === 200) {
         var response = JSON.parse(xhr.responseText);
         if (response.success) {
+          sendbtn.innerHTML = '<i class="fa fa-spinner fa-spin" style="font-size:16px"></i> Vui lòng chờ...';
           setTimeout(() => {
             alert("Bình luận đã được gửi đi, vui lòng chờ duyệt");
             review.value = '';
@@ -132,4 +132,111 @@ function fadeIn(element, duration) {
       setTimeout(fade, 16);
     }
   })();
+}
+
+
+function loadCategory() {
+  var functionName = 'getCategory';
+  var url = 'function/search.php?function=' + encodeURIComponent(functionName);
+  var xhr = new XMLHttpRequest();
+
+  xhr.open('GET', url, true);
+
+  xhr.onload = function () {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      var categories = JSON.parse(xhr.responseText);
+
+      var selectElement = document.getElementById('cate');
+
+      selectElement.innerHTML = '';
+
+      var defaultOption = document.createElement('option');
+      defaultOption.value = '';
+      defaultOption.textContent = 'Chọn danh mục';
+      selectElement.appendChild(defaultOption);
+
+      categories.forEach(function (category) {
+        var option = document.createElement('option');
+        option.value = category.id;
+        option.textContent = category.name;
+        selectElement.appendChild(option);
+      });
+    } else {
+      console.error('Request failed with status', xhr.status);
+    }
+  };
+
+  xhr.onerror = function () {
+    console.error('Request failed');
+  };
+
+  xhr.send();
+}
+
+loadCategory();
+
+function getSelectedValue(selectId) {
+  var selectElement = document.getElementById(selectId);
+  var selectedOption = selectElement.options[selectElement.selectedIndex];
+  return selectedOption.value;
+}
+
+function search() {
+  var yearselected = getSelectedValue("searchyear");
+  var priceselected = getSelectedValue("searchprice");
+  var viewselected = getSelectedValue("searchviews");
+  var cateselected = getSelectedValue("cate");
+  var searchkeyword = document.getElementById("searchkeyword");
+
+  if (yearselected === "" && priceselected === "" && viewselected === "" && cateselected === "" && searchkeyword.value === "") {
+    alert('Vui lòng nhập ít nhất 1 điều kiện');
+    return;
+  }
+
+  var data = {
+    yearproduce: yearselected,
+    views: priceselected,
+    price: viewselected,
+    category: cateselected,
+    keyword: searchkeyword.value
+  };
+
+  var functionName = 'searching';
+  var url = 'function/search.php?function=' + encodeURIComponent(functionName);
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", url);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        document.getElementById('searchsubmission').innerHTML = '<i class="fa fa-spinner fa-spin" style="font-size:16px"></i> Vui lòng chờ...';
+        var result = JSON.parse(xhr.responseText);
+        setTimeout(function () {
+          document.getElementById('searchcontainer').innerHTML = result.RenderHtml;
+          searchkeyword.value = "";
+          document.getElementById('searchsubmission').innerHTML = '<i class="fa fa-search" style="font-size: 30px"></i>';
+        }, 4000);
+      } else {
+        console.error(xhr.status);
+      }
+    }
+  };
+
+  xhr.send(JSON.stringify(data));
+}
+
+function showPassword() {
+  var x = document.getElementById("personalpassword");
+  var icon = document.querySelector('.showpass');
+  if (x.type === "password") {
+    x.type = "text";
+    icon.classList.remove('fa-eye');
+    icon.classList.add('fa-eye-slash');
+  } else {
+    x.type = "password";
+    icon.classList.remove('fa-eye-slash');
+    icon.classList.add('fa-eye');
+  }
 }

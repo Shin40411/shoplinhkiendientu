@@ -68,6 +68,5 @@ if (isset($_SESSION['dangky'])) {
   </section>
 <?php
   include('../content/service.php');
-  include('../content/main-content.php');
 }
 ?>

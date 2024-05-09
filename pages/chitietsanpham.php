@@ -133,5 +133,4 @@ $sql_likes = mysqli_query($con, "UPDATE product SET views=views+1 WHERE id='" . 
 </section>
 <?php
 include('../content/service.php');
-include('../content/main-content.php');
 ?>

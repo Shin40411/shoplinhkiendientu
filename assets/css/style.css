@@ -1227,3 +1227,22 @@ p.title_product{
 .single-featured-cars {
     display: none;
 }
+
+.single-featured-cars.searchresult {
+    display: unset;
+}
+
+.visiblepass {
+    position: relative;
+}
+
+.visiblepass span.showpass{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.avatar{
+    width: 200px;
+    margin: 40px;
+}

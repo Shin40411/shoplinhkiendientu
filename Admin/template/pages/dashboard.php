@@ -12,13 +12,10 @@ require_once('../../../config/dbhelper.php');
 $con = mysqli_connect("localhost", "root", "", "eshop");
 $sql_doanhthu = mysqli_query($con, "SELECT SUM(doanhthu) AS value_sum FROM statistical WHERE doanhthu > 1");
 
-$con = mysqli_connect("localhost", "root", "", "eshop");
 $sql_views = mysqli_query($con, "SELECT SUM(views) AS value_view FROM product WHERE views > 0");
 
-$con = mysqli_connect("localhost", "root", "", "eshop");
 $sql_sanpham = mysqli_query($con, "SELECT COUNT(id) AS total from product");
 
-$con = mysqli_connect("localhost", "root", "", "eshop");
 $sql_binhluan = mysqli_query($con, "SELECT COUNT(id_comment) AS binhluan from comment");
 ?>
 <!DOCTYPE html>
