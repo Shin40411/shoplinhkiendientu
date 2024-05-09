@@ -48,7 +48,9 @@
                       <div class="single-featured-cars">
                         <div class="featured-img-box">
                           <div class="featured-cars-img">
-                            <img src="<?php echo 'Admin/template/pages/uploads/'. $item['thumbnail'] ?>">
+                            <a class="scroll" href="javascript:void(0);" onclick="loadPage('chitietsanpham', '<?php echo $item['id'] ?>', '<?php echo $item['id_category'] ?>')">
+                              <img src="<?php echo 'Admin/template/pages/uploads/' . $item['thumbnail'] ?>">
+                            </a>
                           </div>
                           <div class="featured-model-info">
                             <p>
@@ -59,7 +61,7 @@
                         </div>
                         <div class="featured-cars-txt">
                           <h2>
-                            <a href="detail.php?id=<?php echo $item['id'] ?>&id_category=<?php echo $item['id_category'] ?>">
+                            <a class="scroll" href="javascript:void(0);" onclick="loadPage('chitietsanpham', '<?php echo $item['id'] ?>', '<?php echo $item['id_category'] ?>')">
                               <?php echo $item['title'] ?>
                             </a>
                           </h2>

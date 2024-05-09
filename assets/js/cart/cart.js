@@ -316,12 +316,15 @@ function pay() {
                         }, 2000);
                     }
                 }, 4000);
-            } else {
-                console.error(xhr.responseText);
-            }
-        } else {
-            console.error(xhr.responseText);
-        }
+            } 
+            // else
+            //  {
+            //     console.error(xhr.responseText);
+            // }
+        } 
+        // else {
+        //     console.error(xhr.responseText);
+        // }
     };
     xhr.send(JSON.stringify(datasend));
 }
@@ -332,13 +335,13 @@ function loadOrdersPage() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 updateCartSummary();
-                var ordersHTML = JSON.parse(xhr.responseText);
-                if (ordersHTML && ordersHTML.renderorder){
+                var orders = JSON.parse(xhr.responseText);
+                if (orders != null){
                     goToStep(3);
                     document.getElementById('carttable').innerHTML = "";
                     document.getElementById('shipping').innerHTML = "";
                     document.getElementById('payment').innerHTML = "";
-                    document.getElementById('orderhistory').innerHTML = ordersHTML.renderorder;
+                    document.getElementById('orderhistory').innerHTML = orders.renderorder;
                 }else{
                     console.error('Error fetching orders: ' + xhr.responseText);
                 }

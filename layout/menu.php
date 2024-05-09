@@ -28,10 +28,10 @@ $query_category = mysqli_query($con, $sql_category);
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
           <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-            <li class=" scroll active"><a href="#home">trang chủ</a></li>
+            <li class=" scroll active"><a href="#home" onclick="window.location.href='index.php'">trang chủ</a></li>
             <li class="scroll"><a href="#service">dịch vụ</a></li>
             <li class="scroll"><a href="#featured-cars">sản phẩm</a></li>
-            <li class="scroll"><a href="#new-cars">khuyến mãi sốc</a></li>
+            <!-- <li class="scroll"><a href="#new-cars">khuyến mãi sốc</a></li> -->
             <!-- <li class="scroll"><a href="#brand">thương hiệu</a></li> -->
             <?php
             if (isset($_SESSION['dangky'])) {
@@ -49,7 +49,7 @@ $query_category = mysqli_query($con, $sql_category);
                       <a href="#" style="font-size: unset;"><i class="fa fa-user-circle-o"></i> Tài khoản của tôi</a>
                     </li>
                     <li class="list-group-item">
-                      <a href="lichsudonhang.php" style="font-size: unset;"><i class="fa fa-cart-arrow-down"></i> Lịch sử đơn hàng</a>
+                      <a href="javascript:void(0);" onclick="loadPage('lichsudonhang')" style="font-size: unset;"><i class="fa fa-cart-arrow-down"></i> Lịch sử đơn hàng</a>
                     </li>
                     <li class="list-group-item">
                       <a class="dropdown-item" style="font-size: unset;" onclick="logout()" href="javascript:void(0);"><i class="fa fa-sign-out"></i> Đăng xuất tài khoản</a>
