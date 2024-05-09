@@ -1,0 +1,1 @@
+- Cài php và xampp trước khi launch
