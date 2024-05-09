@@ -1,1 +1,2 @@
-- Cài php và xampp trước khi launch
+Cài php và xampp trước khi launch
+Tạo database rỗng đặt tên là eshop trước khi import
