@@ -96,7 +96,7 @@ include('header.php');
 												<?php
 												if ($item['status_pro'] == 0) {
 												?>
-													<a href="stocking.php?outstock=<?php echo $item['id'] ?>"> <span class="badge badge-sm bg-gradient-secondary" style="margin-bottom:22px">Hàng khuyến mãi</span> </a>
+													<a href="stocking.php?outstock=<?php echo $item['id'] ?>"> <span class="badge badge-sm bg-gradient-secondary" style="margin-bottom:22px">Hàng hot</span> </a>
 												<?php } else { ?>
 													<a href="stocking.php?stock=<?php echo $item['id'] ?>"> <span class="badge badge-sm bg-gradient-success" style="margin-bottom:22px">Hàng thường</span> </a>
 												<?php } ?>

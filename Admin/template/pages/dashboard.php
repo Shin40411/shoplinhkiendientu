@@ -91,7 +91,7 @@ $sql_binhluan = mysqli_query($con, "SELECT COUNT(id_comment) AS binhluan from co
               <div class="card">
                 <div class="card-header p-3 pt-2">
                   <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                    <i class='fas fa-apple-alt'></i>
+                    <i class='fas fa-atom'></i>
                   </div>
                   <div class="text-end pt-1">
                     <p class="text-sm mb-0 text-capitalize">Tổng số sản phẩm</p>

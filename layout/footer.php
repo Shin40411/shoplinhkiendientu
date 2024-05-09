@@ -48,16 +48,22 @@
                 </div>
                 <div class="col-md-offset-1 col-md-3 col-sm-6">
                     <div class="single-footer-widget">
-                        <form action="https://formspree.io/f/{form_id}" method="post">
+                        <form id="contactform" action="https://formspree.io/f/mwkgzejk" method="post">
                             <h2>liên hệ với chúng tôi</h2>
                             <div class="hm-foot-email">
                                 <div class="foot-email-box">
-                                    <input type="email" class="form-control" id="email" required name="Email" placeholder="Email của bạn...">
-                                </div>
-                                <div class="foot-email-subscribe">
-                                    <span><button type="submit"><i class="fa fa-arrow-right"></i></button></span>
+                                    <input type="email" class="form-control" name="email" required name="Email" placeholder="Email của bạn...">
                                 </div>
                             </div>
+                            <div class="hm-foot-email">
+                                <div class="foot-email-box">
+                                    <input type="text" class="form-control" name="message" required name="Email" placeholder="Tin nhắn của bạn...">
+                                </div>
+                                <div class="foot-email-subscribe">
+                                    <span><button type="button"><i class="fa fa-arrow-right"></i></button></span>
+                                </div>
+                            </div>
+                            <p id="my-form-status"></p>
                         </form>
                     </div>
                 </div>

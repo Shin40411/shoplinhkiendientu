@@ -157,7 +157,7 @@ include('header.php');
 					</div>
 
 					<div class="form-group">
-						<label for="status">Chọn trạng thái(0: Hàng khuyến mãi, 1: Hàng bình thường):</label>
+						<label for="status">Chọn trạng thái(0: Hàng hot, 1: Hàng bình thường):</label>
 						<input type="number" required="trues" id="status" name="status" min="0" max="1" value="<?= $status ?>">
 					</div>
 

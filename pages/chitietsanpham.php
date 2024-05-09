@@ -15,18 +15,6 @@ if (isset($_GET['id'])) {
   }
 }
 
-if (isset($_POST['cmt'])) {
-
-  $comment = $_POST['comment'];
-  if (isset($_SESSION['dangky'])) {
-    $id_product = $_GET['id'];
-    $account_id = mysqli_fetch_array($con->query("SELECT * FROM signup WHERE name='" . $_SESSION['dangky'] . "'"));
-    $account_id = $account_id['id_signup'];
-    $st1 = '0';
-    $con->query("INSERT INTO comment(comments,id_account,id_product,status) VALUE ('" . $comment . "','" . $account_id . "','" . $id_product . "','" . $st1 . "')");
-    echo "<script>alert('Bình luận thành công, chờ phê duyệt!');</script>";
-  }
-}
 $sql_likes = mysqli_query($con, "UPDATE product SET views=views+1 WHERE id='" . $id . "'");
 ?>
 
@@ -39,7 +27,7 @@ $sql_likes = mysqli_query($con, "UPDATE product SET views=views+1 WHERE id='" . 
         </div>
         <div class="col-md-6">
           <ul class="product_content d-flex flex-wrap">
-            <li class="gia">Mã sản phẩm: E-0<?= $product['id'] ?></li>
+            <li class="gia">Mã sản phẩm: E-<?= $product['id'] ?></li>
             <li class="ten">
               <h1><b><?= $product['title'] ?></b></h1>
             </li>
@@ -60,39 +48,31 @@ $sql_likes = mysqli_query($con, "UPDATE product SET views=views+1 WHERE id='" . 
           </div>
         </div>
       </div>
+      <hr>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <?php
             // if (isset($_SESSION['dangky'])) {
             ?>
-              <div class="card">
-                <h5 class="card-header">Để lại bình luận:</h5>
+            <div class="card">
+              <h5 class="card-header">Để lại bình luận:</h5>
+              <form method="post">
                 <div class="card-body">
-                  <form name="Comment" method="post">
-                    <div class="form-group">
-                      <textarea class="form-control" name="comment" rows="3" placeholder="Bình luận của bạn..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-lg btn-addtocart" name="cmt">Gửi</button>
-                  </form>
+                  <div class="form-group">
+                    <textarea class="form-control" id="comment" rows="3" placeholder="Bình luận của bạn..." required></textarea>
+                  </div>
+                  <button type="button" onclick="commentsend('<?php echo $id ?>')" class="btn btn-lg btn-addtocart" id="cmt" name="cmt">Gửi bình luận</button>
                 </div>
-              </div>
+              </form>
+            </div>
             <?php
             // }
             ?>
-            <div class="panel panel-info">
+            <div class="commentrow panel panel-info">
               <?php
               $sts = 1;
               $query_binhluan = mysqli_query($con, "SELECT * FROM signup a JOIN comment b on a.id_signup=b.id_account JOIN product c on b.id_product=c.id WHERE status=" . $sts . " AND id_product=" . $_GET['id']);
-              // if (mysqli_fetch_array($query_binhluan) > 0) {
-              ?>
-                <div class="panel-footer">
-                  <h5 class="card-header">Đánh giá về sản phẩm này:</h5>
-                </div>
-              <?php
-              // }
-              ?>
-              <?php
               while ($row = mysqli_fetch_array($query_binhluan)) {
               ?>
                 <div class="media mb-4">

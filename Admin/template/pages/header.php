@@ -96,7 +96,7 @@ if(!$regexResult){
         <li class="nav-item">
           <a class="nav-link text-white " href="product.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="fas fa-carrot"></i>
+              <i class="fas fa-atom"></i>
             </div>
             <span class="nav-link-text ms-1">Sản phẩm</span>
           </a>
@@ -104,25 +104,25 @@ if(!$regexResult){
           <?php } ?>
 
           <?php if (checkPrivilege('category.php')) { ?>
-         <li class="nav-item">
+         <!-- <li class="nav-item">
           <a class="nav-link text-white " href="category.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
              <i class="fa fa-list-ul"></i>
             </div>
             <span class="nav-link-text ms-1">Danh mục bài viết</span>
           </a>
-        </li>
+        </li> -->
           <?php } ?>
 
            <?php if (checkPrivilege('news.php')) { ?>
-         <li class="nav-item">
+         <!-- <li class="nav-item">
           <a class="nav-link text-white " href="news.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-sticky-note-o"></i>
             </div>
             <span class="nav-link-text ms-1">Bài viết</span>
           </a>
-        </li>
+        </li> -->
         <?php } ?>
 
         <?php if (checkPrivilege('comment.php')) { ?>
@@ -159,35 +159,35 @@ if(!$regexResult){
         <?php } ?>
 
          <?php if (checkPrivilege('contact.php')) { ?>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link text-white" href="contact.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-address-book"></i>
             </div>
             <span class="nav-link-text ms-1">Liên hệ</span>
           </a>
-        </li>
+        </li> -->
         <?php } ?>
 
           <?php if (checkPrivilege('Banner-slider.php')) { ?>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link text-white" href="Banner-slider.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-sliders-h"></i>
             </div>
             <span class="nav-link-text ms-1">Banner</span>
           </a>
-        </li>
+        </li> -->
            <?php } ?>
       <?php if (checkPrivilege('upload.php')) { ?>
-           <li class="nav-item">
+           <!-- <li class="nav-item">
           <a class="nav-link text-white" href="upload.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-play"></i>
             </div>
             <span class="nav-link-text ms-1">Video</span>
           </a>
-        </li>
+        </li> -->
         <?php } ?>
       </ul>
     </div>
@@ -227,7 +227,7 @@ if(!$regexResult){
             </li>
              
             <li class="nav-item px-3 d-flex align-items-center">
-              <a href="dashboard.php?action=logout" class="nav-link text-body font-weight-bold px-0">
+              <a href="javascript:void(0);" onclick="logout()" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-power-off"></i>
                 <span class="d-sm-inline d-none">Đăng xuất</span>
               </a>

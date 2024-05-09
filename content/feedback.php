@@ -1,7 +1,8 @@
 <section id="clients-say" class="clients-say">
     <div class="container">
         <div class="section-header">
-            <h2>Đánh giá từ khách hàng thân thiết</h2>
+            <p>Đánh giá từ khách hàng thân thiết</p>
+            <h2>Về sản phẩm của chúng tôi</h2>
         </div>
         <div class="row">
             <div class="owl-carousel testimonial-carousel">

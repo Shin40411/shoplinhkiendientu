@@ -648,7 +648,7 @@ button.addcart:hover {
     margin: 0 0 15px;
 }
 /*hm-foot-email*/
-.hm-foot-email{position: relative;}
+.hm-foot-email{position: relative; padding: 0 0 20px 0;}
 .foot-email-box .form-control {
     background:#26294d;
     display: block;
@@ -664,10 +664,10 @@ button.addcart:hover {
 }
 .foot-email-subscribe {
     position: absolute;
-    top: 0;
+    top: 5px;
     right: 0;
     width: 50px;
-    height: 100%;
+    /* height: 100%; */
     background: transparent;
     color: #666c81;
     font-size: 12px;
@@ -1207,9 +1207,23 @@ p.title_product{
 }
 
 .media.mb-4 {
-    margin: 50px;
+    padding: 50px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .media-body h5 {
     padding: 20px 0;
+}
+
+.commentrow{
+    margin: 50px auto;
+    border: none;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.single-featured-cars {
+    display: none;
 }

@@ -48,11 +48,10 @@ if(isset($_GET['id'])){
   <!-- script -->
       <script src="js/jquery-1.11.1.min.js"></script>
 
-      <?php include('banner-slider/slider-script.php') ?>
+      <?php include('banner-slider/slider-script.js') ?>
       
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
 
-         <?php include('login/script.php') ?>
 </body>
 </html>
 <?php 

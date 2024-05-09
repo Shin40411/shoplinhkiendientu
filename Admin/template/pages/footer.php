@@ -6,16 +6,12 @@
                 © <script>
                   document.write(new Date().getFullYear())
                 </script>,
-                 <i class="fa fa-lemon"></i> 
-                <a href="../../../index.php" class="font-weight-bold">ShopTraiCay.vn</a>
-                chất lượng tươi ngon.
+                 Copyright 
+                <a href="../../../index.php" class="font-weight-bold">Linh kiện E-shop</a>
               </div>
             </div>
             <div class="col-lg-8" style="padding-right:40px">
               <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                <li class="nav-item">
-                  <a href="#" class="nav-link text-muted">Liên hệ</a>
-                </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link pe-0 text-muted">Chính sách</a>
                 </li>
@@ -92,7 +88,7 @@
     </div>
   </div>
 <?php 
-include ('script.php'); 
+include ('script.html'); 
 ?>
       
 </body>

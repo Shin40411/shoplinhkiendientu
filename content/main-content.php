@@ -70,9 +70,10 @@
                       </div>
                     </div>
                   <?php  } ?>
-
                 </div>
-
+                <div class="d-flex justify-center">
+                  <button type="button" class="btn btn-primary" id="gallery-btn">Hiển thị thêm</button>
+                </div>
               </div>
             </div>
           </section>

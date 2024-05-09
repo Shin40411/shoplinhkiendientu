@@ -1,8 +1,8 @@
 <section id="new-cars" class="new-cars">
   <div class="container">
     <div class="section-header">
-      <p>Sản <span>phẩm</span> khuyến <span>mãi</span></p>
-      <h2>combo giảm giá sốc</h2>
+      <p>Hàng <span>HOT</span></p>
+      <h2>dành cho hè 2024</h2>
     </div><!--/.section-header-->
     <div class="new-cars-content">
       <div class="owl-carousel owl-theme" id="new-cars-carousel">
@@ -25,7 +25,7 @@
                     <p>
                     <?php echo $item['content'] ?>
                     </p>
-                    <button class="welcome-btn new-cars-btn" onclick="window.location.href='#'">
+                    <button class="welcome-btn new-cars-btn" onclick="loadPage('chitietsanpham', '<?php echo $item['id'] ?>', '<?php echo $item['id_category'] ?>')">
                       Xem chi tiết
                     </button>
                   </div>
