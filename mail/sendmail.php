@@ -17,15 +17,15 @@ class Mailer{
 	    $mail->isSMTP();                                     
 	    $mail->Host = 'smtp.gmail.com';  
 	    $mail->SMTPAuth = true;                              
-	    $mail->Username = 'htho40702@gmail.com';                
-	    $mail->Password = 'npzpbxlqxquuimes';                          
+	    $mail->Username = '';//dia chi gmail                
+	    $mail->Password = '';//password app gmail                          
 	    $mail->SMTPSecure = 'tls';                           
 	    $mail->Port = 587;                                   
 	 
-	   
-	    $mail->setFrom('htho40702@gmail.com', 'Mailer');
-	    $mail->addAddress($maildathang, 'Shin');     
-	    $mail->addCC('htho40702@gmail.com');
+					//dia chi gmail
+	    $mail->setFrom('', 'Mailer');   //username
+	    $mail->addAddress($maildathang, '');     
+	    $mail->addCC('htho40702@gmail.com');//dia chi gmail
 	    
 	    //Content
 	    $mail->isHTML(true);                                

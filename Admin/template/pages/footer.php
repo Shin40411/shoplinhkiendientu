@@ -10,7 +10,7 @@
                 <a href="../../../index.php" class="font-weight-bold">Linh kiện E-shop</a>
               </div>
             </div>
-            <div class="col-lg-8" style="padding-right:40px">
+            <!-- <div class="col-lg-8" style="padding-right:40px">
               <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                 <li class="nav-item">
                   <a href="#" class="nav-link pe-0 text-muted">Chính sách</a>
@@ -19,7 +19,7 @@
                   <a href="#" class="nav-link pe-0 text-muted">Blog</a>
                 </li>
               </ul>
-            </div>
+            </div> -->
           </div>
         </div>
       </footer>

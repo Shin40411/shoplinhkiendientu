@@ -1,22 +1,19 @@
-var featuredCars = document.querySelectorAll(".single-featured-cars");
 
-function loadPage(page, id, id_cate) {
+function loadPage(page, id, id_cate, tag) {
   var xhttp = new XMLHttpRequest();
-  var target = '';
   if (id && id_cate) {
     xhttp.open("GET", "pages/" + page + ".php?id=" + id + "&id_category=" + id_cate, true);
-    target = '#detail-pro'
   } else {
     xhttp.open("GET", "pages/" + page + ".php", true);
-    target = '#orderclient';
   }
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
 
       document.getElementById("app").innerHTML = this.responseText;
-      console.log(featuredCars);
+      // console.log(featuredCars);
+      hidecontent();
 
-      window.location.href = target;
+      window.location.href = tag;
     }
   };
 
@@ -52,6 +49,7 @@ async function handleSubmit(event) {
     status.innerHTML = "Đã có lỗi xảy ra! tin nhắn chưa được gửi đi"
   });
 }
+
 form.addEventListener("submit", handleSubmit)
 
 function commentsend(idpro) {
@@ -96,44 +94,6 @@ function commentsend(idpro) {
 
   xhr.send(JSON.stringify(datasend));
 }
-
-for (var i = 0; i < 4 && i < featuredCars.length; i++) {
-  featuredCars[i].style.display = "unset";
-}
-
-var galleryButton = document.getElementById("gallery-btn");
-
-galleryButton.addEventListener('click', function (event) {
-  event.preventDefault();
-
-  var hiddenFeaturedCars = document.querySelectorAll("#featured-cars > div > div.featured-cars-content > div.row > div > div:not([style='display: unset;'])");
-  console.log(hiddenFeaturedCars);
-  for (var i = 0; i < 4 && i < hiddenFeaturedCars.length; i++) {
-    hiddenFeaturedCars[i].style.display = "unset";
-    hiddenFeaturedCars[i].style.opacity = 0;
-    fadeIn(hiddenFeaturedCars[i], 800);
-  }
-
-  if (hiddenFeaturedCars.length <= 4) {
-    this.style.display = "none";
-  }
-});
-
-function fadeIn(element, duration) {
-  var increment = 16 / duration;
-  var opacity = 0;
-  element.style.opacity = 0;
-  (function fade() {
-    opacity += increment;
-    element.style.opacity = opacity;
-    if (opacity >= 1) {
-      opacity = 1;
-    } else {
-      setTimeout(fade, 16);
-    }
-  })();
-}
-
 
 function loadCategory() {
   var functionName = 'getCategory';
@@ -239,4 +199,85 @@ function showPassword() {
     icon.classList.remove('fa-eye-slash');
     icon.classList.add('fa-eye');
   }
+}
+
+
+function hidecontent() {
+  var featuredCars = document.querySelectorAll(".single-featured-cars");
+
+  for (var i = 0; i < 8 && i < featuredCars.length; i++) {
+    featuredCars[i].style.display = "unset";
+  }
+}
+
+hidecontent();
+
+function showmore(e) {
+  event.preventDefault();
+  var hiddenFeaturedCars = document.querySelectorAll("#featured-cars > div > div.featured-cars-content > div.row > div > div:not([style='display: unset;'])");
+  // console.log(hiddenFeaturedCars);
+  for (var i = 0; i < hiddenFeaturedCars.length; i++) {
+    hiddenFeaturedCars[i].style.display = "unset";
+    hiddenFeaturedCars[i].style.opacity = 0;
+    fadeIn(hiddenFeaturedCars[i], 800);
+  }
+
+  if (hiddenFeaturedCars.length <= hiddenFeaturedCars.length) {
+    e.style.display = "none";
+  }
+}
+
+function fadeIn(element, duration) {
+  var increment = 16 / duration;
+  var opacity = 0;
+  element.style.opacity = 0;
+  (function fade() {
+    opacity += increment;
+    element.style.opacity = opacity;
+    if (opacity >= 1) {
+      opacity = 1;
+    } else {
+      setTimeout(fade, 16);
+    }
+  })();
+}
+
+function editPersonalInfo() {
+  var name = document.getElementById("personalname").value.trim();
+  var email = document.getElementById("personalemail").value.trim();
+  var password = document.getElementById("personalpassword").value.trim();
+
+  var submitBtn = document.getElementById("submitinfo");
+
+  if (name === "" || email === "" || password === "") {
+    alert("Please fill in all required fields.");
+    return;
+  }
+  var formData = new FormData(document.getElementById("updateForm"));
+  var xhr = new XMLHttpRequest();
+
+  submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin" style="font-size:16px"></i> Vui lòng chờ...';
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        var response = JSON.parse(xhr.responseText);
+        if (response.success) {
+          setTimeout(function () {
+            loadPage('taikhoancuatoi', '', '', '#myaccount');
+            alert("Cập nhật thông tin thành công!");
+            submitBtn.innerHTML = "Cập nhật";
+          }, 4000);
+        } else {
+          alert("Lỗi: " + response.message);
+          submitBtn.innerHTML = "Cập nhật";
+        }
+      } else {
+        alert('Error occurred during update: ' + xhr.status);
+        submitBtn.innerHTML = "Cập nhật";
+      }
+    }
+  };
+
+  xhr.open("POST", "function/personal.php", true);
+  xhr.send(formData);
 }

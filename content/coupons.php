@@ -25,7 +25,7 @@
                     <p>
                     <?php echo $item['content'] ?>
                     </p>
-                    <button class="welcome-btn new-cars-btn" onclick="loadPage('chitietsanpham', '<?php echo $item['id'] ?>', '<?php echo $item['id_category'] ?>')">
+                    <button class="welcome-btn new-cars-btn" onclick="loadPage('chitietsanpham', '<?php echo $item['id'] ?>', '<?php echo $item['id_category'] ?>', '#detail-pro')">
                       Xem chi tiết
                     </button>
                   </div>

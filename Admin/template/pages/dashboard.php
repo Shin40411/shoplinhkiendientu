@@ -40,13 +40,11 @@ $sql_binhluan = mysqli_query($con, "SELECT COUNT(id_comment) AS binhluan from co
       <div class="col-lg-12" style="margin-top:10px">
 
         <div class="row mt-4">
-          <div class="col-lg-4 col-md-8 mt-4 mb-4">
+          <!-- <div class="col-lg-4 col-md-8 mt-4 mb-4">
             <div class="card z-index-2 ">
-              <!-- <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">   -->
               <div class="chart">
                 <div id="chart" style="height: 250px;width:100%"></div>
               </div>
-              <!--  </div> -->
               <div class="card-body">
                 <h6 class="mb-0 "><strong>Thống kê đơn hàng theo: <span id="text-date"></span></strong></h6>
                 <p class="text-sm ">
@@ -59,9 +57,9 @@ $sql_binhluan = mysqli_query($con, "SELECT COUNT(id_comment) AS binhluan from co
                 </p>
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="col-lg-4 col-md-8 mt-4 mb-4">
+          <div class="col-lg-6 col-md-8 mt-4 mb-4">
             <?php
             while ($row = mysqli_fetch_array($sql_doanhthu)) {
             ?>
@@ -102,7 +100,7 @@ $sql_binhluan = mysqli_query($con, "SELECT COUNT(id_comment) AS binhluan from co
               </div>
           </div>
         <?php } ?>
-        <div class="col-lg-4 col-md-8 mt-4 mb-4">
+        <div class="col-lg-6 col-md-8 mt-4 mb-4">
           <?php
           while ($row = mysqli_fetch_array($sql_views)) {
           ?>

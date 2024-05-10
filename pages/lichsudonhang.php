@@ -12,12 +12,11 @@ require_once('../config/dbhelper.php');
 //     $name = $category['name'];
 //   }
 // }
-$id_khachhang = $_SESSION['id_khachhang'];
-$con = mysqli_connect("localhost", "root", "", "eshop");
-$sql_lietke_dh = mysqli_query($con, "SELECT * FROM orders,signup WHERE orders.id_khachhang=signup.id_signup AND orders.id_khachhang='$id_khachhang' ORDER BY orders.id ASC");
-?>
-<?php
 if (isset($_SESSION['dangky'])) {
+  $id_khachhang = $_SESSION['id_khachhang'];
+  $con = mysqli_connect("localhost", "root", "", "eshop");
+  $sql_lietke_dh = mysqli_query($con, "SELECT * FROM orders,signup WHERE orders.id_khachhang=signup.id_signup AND orders.id_khachhang='$id_khachhang' ORDER BY orders.id ASC");
+
 ?>
   <section id="orderclient" class="history-order featured-cars">
     <div class="container">
@@ -68,5 +67,6 @@ if (isset($_SESSION['dangky'])) {
   </section>
 <?php
   include('../content/service.php');
+  include('../content/main-content.php');
 }
 ?>

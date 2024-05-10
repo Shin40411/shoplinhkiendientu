@@ -65,7 +65,7 @@ function searching()
             $renderHtml .= '<div class="single-featured-cars searchresult">';
             $renderHtml .= '<div class="featured-img-box">';
             $renderHtml .= '<div class="featured-cars-img">';
-            $renderHtml .= "<a class='scroll' href='javascript:void(0);' onclick=\"loadPage('chitietsanpham', '{$item['id']}', '{$item['id_category']}')\">";
+            $renderHtml .= "<a class='scroll' href='javascript:void(0);' onclick=\"loadPage('chitietsanpham', '{$item['id']}', '{$item['id_category']}', '#detail-pro')\">";
             $renderHtml .= "<img src='Admin/template/pages/uploads/{$item['thumbnail']}'/>";
             $renderHtml .= '</a>';
             $renderHtml .= '</div>';
@@ -76,7 +76,7 @@ function searching()
             $renderHtml .= '</div>';
             $renderHtml .= '<div class="featured-cars-txt">';
             $renderHtml .= '<h2>';
-            $renderHtml .= "<a class='scroll' href='javascript:void(0);' onclick=\"loadPage('chitietsanpham', '{$item['id']}', '{$item['id_category']}')\">{$item['title']}</a>";
+            $renderHtml .= "<a class='scroll' href='javascript:void(0);' onclick=\"loadPage('chitietsanpham', '{$item['id']}', '{$item['id_category']}', '#detail-pro')\">{$item['title']}</a>";
             $renderHtml .= '</h2>';
             $renderHtml .= "<h3>Giá: " . number_format($item['price'], 0, ',', '.') . " vnđ</h3>";
             $renderHtml .= '</div>';

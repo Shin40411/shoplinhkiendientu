@@ -48,7 +48,7 @@
             <div class="single-featured-cars">
               <div class="featured-img-box">
                 <div class="featured-cars-img">
-                  <a class="scroll" href="javascript:void(0);" onclick="loadPage('chitietsanpham', '<?php echo $item['id'] ?>', '<?php echo $item['id_category'] ?>')">
+                  <a class="scroll" href="javascript:void(0);" onclick="loadPage('chitietsanpham', '<?php echo $item['id'] ?>', '<?php echo $item['id_category'] ?>', '#detail-pro')">
                     <img src="<?php echo 'Admin/template/pages/uploads/' . $item['thumbnail'] ?>">
                   </a>
                 </div>
@@ -61,7 +61,7 @@
               </div>
               <div class="featured-cars-txt">
                 <h2>
-                  <a class="scroll" href="javascript:void(0);" onclick="loadPage('chitietsanpham', '<?php echo $item['id'] ?>', '<?php echo $item['id_category'] ?>')">
+                  <a class="scroll" href="javascript:void(0);" onclick="loadPage('chitietsanpham', '<?php echo $item['id'] ?>', '<?php echo $item['id_category'] ?>', '#detail-pro')">
                     <?php echo $item['title'] ?>
                   </a>
                 </h2>
@@ -72,8 +72,9 @@
         <?php  } ?>
       </div>
       <div class="d-flex justify-center">
-        <button type="button" class="btn btn-primary" id="gallery-btn">Hiển thị thêm</button>
+        <button type="button" class="btn btn-primary" onclick="showmore(this)">Hiển thị thêm</button>
       </div>
     </div>
   </div>
 </section>
+

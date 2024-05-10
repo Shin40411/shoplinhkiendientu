@@ -1246,3 +1246,7 @@ p.title_product{
     width: 200px;
     margin: 40px;
 }
+
+section#myaccount h3, label {
+    color: #fff;
+}

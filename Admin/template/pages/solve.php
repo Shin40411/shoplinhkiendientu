@@ -3,7 +3,7 @@
     use Carbon\CarbonInterval;
     include('../../../config/dbhelper.php');
     require('../../../Carbon/autoload.php');
-      $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+      $now = date('Y-m-d');
 	 if(isset($_GET['code'])){
 	 	$code = $_GET['code'];
 	 	$con=mysqli_connect("localhost","root","","eshop");

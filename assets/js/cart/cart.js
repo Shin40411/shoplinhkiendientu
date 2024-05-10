@@ -41,12 +41,31 @@ function updateCartSummary() {
                         document.getElementById('item-count').innerText = 0;
                         document.getElementById('progressbarcart').style.display = "none";
                         var carbody = document.getElementById('cartbodies');
-                        if (carbody){
+                        if (carbody) {
                             carbody.innerHTML = '<td colspan="8"><p style="line-height:43px;">Chưa có sản phẩm!</p></td>';
+                        } else {
+                            document.getElementById('carttable').innerHTML = `
+                            <table style="text-align:center;width: 100%;border-collapse: collapse;" border="1">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="vertical-align: middle;">#</th>
+                                        <th class="text-center" style="vertical-align: middle;">Tên sản phẩm</th>
+                                        <th class="text-center" style="vertical-align: middle;">Số lượng</th>
+                                        <th class="text-center" style="vertical-align: middle;">Giá</th>
+                                        <th class="text-center" style="vertical-align: middle;">Mã sản phẩm</th>
+                                        <th class="text-center" style="vertical-align: middle;">Hình ảnh</th>
+                                        <th class="text-center" style="vertical-align: middle;">Thành tiền</th>
+                                        <th class="text-center" style="vertical-align: middle;">Xóa sản phẩm</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cartbodies">
+                                    <td colspan="8"><p style="line-height:43px;">Chưa có sản phẩm!</p></td>
+                                </tbody>
+                            `;
                         }
                         cartButton.style.animationName = 'none';
                     }
-                }
+                } 
             } else {
                 console.error("Failed to fetch cart summary. Status code: " + xhr.status);
             }
@@ -316,12 +335,12 @@ function pay() {
                         }, 2000);
                     }
                 }, 4000);
-            } 
+            }
             // else
             //  {
             //     console.error(xhr.responseText);
             // }
-        } 
+        }
         // else {
         //     console.error(xhr.responseText);
         // }
@@ -334,15 +353,14 @@ function loadOrdersPage() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                updateCartSummary();
                 var orders = JSON.parse(xhr.responseText);
-                if (orders != null){
+                if (orders != null) {
                     goToStep(3);
                     document.getElementById('carttable').innerHTML = "";
                     document.getElementById('shipping').innerHTML = "";
                     document.getElementById('payment').innerHTML = "";
                     document.getElementById('orderhistory').innerHTML = orders.renderorder;
-                }else{
+                } else {
                     console.error('Error fetching orders: ' + xhr.responseText);
                 }
             } else {
@@ -391,6 +409,7 @@ function goToStep(index) {
 
 function backtoFirstState() {
     goToStep(0);
+    updateCartSummary();
     var changeS = document.getElementById('changeStep');
     if (changeS) changeS.innerHTML = '<button class="btn btn-success">Thanh toán</button>';
 
