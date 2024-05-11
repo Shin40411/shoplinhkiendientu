@@ -281,3 +281,109 @@ function editPersonalInfo() {
   xhr.open("POST", "function/personal.php", true);
   xhr.send(formData);
 }
+
+var modalcancel = document.getElementById("cancelmodal");
+
+var getIdBill;
+
+function showcancelorder(id_bill) {
+  getIdBill = id_bill;
+  modalcancel.style.display = "block";
+  const cancelModalHTML = `
+  <div class="cancelorder-content">
+      <span class="cancelclose" onclick="closepopup()">&times;</span>
+      <div class="row">
+          <div class="form-group">
+              <div class="pd10">
+                  <label for="reasoncancel" class="text-danger">
+                      Hãy cho chúng tôi biết lý do:
+                  </label>
+              </div>
+              <div class="pd10">
+                  <select class="form-control" id="choosereasons" onchange="showreason()">
+                      <option value="-1" selected>Thay đổi ý định mua hàng</option>
+                      <option value="0">Mua nhầm sản phẩm</option>
+                      <option value="1">Phương thức thanh toán có vấn đề</option>
+                      <option value="2">Lý do khác</option>
+                  </select>
+              </div>
+              <div class="pd10" id="reasoncancel">
+                  <textarea type="text" id="reasonother" rows="5" class="form-control" placeholder="Lý do bạn muốn hủy đơn hàng..."></textarea>
+              </div>
+              <div id="submitCancel" class="pd10 d-flex justify-center">
+                  <button type="button" id="confirmcancel" onclick="CancelConfirm()" class="btn btn-danger">Xác nhận hủy đơn hàng</button>
+              </div>
+          </div>
+      </div>
+  </div>
+`;
+  modalcancel.innerHTML = cancelModalHTML;
+}
+
+function CancelConfirm() {
+  if (getIdBill) {
+    var selectReason = document.getElementById("choosereasons");
+    var selectedIndexR = selectReason.selectedIndex;
+    var selectedOptionR = selectReason.options[selectedIndexR];
+    var selectedTextR = selectedOptionR.innerText;
+    var other = document.getElementById("reasonother");
+
+    var writeReason;
+
+    if (getSelectedValue("choosereasons") == '2') {
+      if (other) {
+        writeReason = other.value;
+      } else {
+        alert('Vui lòng nhập lý do!');
+        return;
+      }
+    } else {
+      writeReason = selectedTextR;
+    }
+
+    const idBill = getIdBill;
+    const btnconfirm = document.getElementById('confirmcancel');
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'function/cancelorder.php');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+      btnconfirm.innerHTML = '<i class="fa fa-spinner fa-spin" style="font-size:16px"></i> Vui lòng chờ...';
+      if (xhr.status === 200) {
+        setTimeout(function () {
+          btnconfirm.innerHTML = '<i class="fa fa-check-circle-o" style="font-size:16px"></i> Hủy đơn hàng thành công';
+          loadPage('lichsudonhang', '', '', '#orderclient');
+          btnconfirm.innerHTML = 'Xác nhận hủy đơn hàng';
+          closepopup();
+        }, 4000);
+      } else {
+        setTimeout(function () {
+          btnconfirm.innerHTML = '<i class="fa fa-close" style="font-size:16px"></i> Hủy đơn hàng thất bại';
+        }, 2000);
+        btnconfirm.innerHTML = 'Xác nhận hủy đơn hàng';
+      }
+    };
+    xhr.onerror = function () {
+      console.error('Error occurred while canceling order');
+    };
+    xhr.send('idBill=' + encodeURIComponent(idBill) + '&&reason=' + encodeURIComponent(writeReason));
+  }
+}
+
+function closepopup() {
+  modalcancel.style.display = "none";
+}
+
+window.onclick = function (event) {
+  if (event.target == modalcancel) {
+    modalcancel.style.display = "none";
+  }
+}
+
+function showreason() {
+  var reason = document.getElementById('reasoncancel');
+  if (getSelectedValue("choosereasons") == '2') {
+    reason.style.display = "block";
+  } else {
+    reason.style.display = "none";
+  }
+}

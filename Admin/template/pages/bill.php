@@ -62,8 +62,8 @@ main.main-content.position-relative.max-height-vh-100.h-100.border-radius-lg {
                                             <th width="40px">Mã đơn hàng</th>
                                             <th style="text-align: center;">Họ tên</th>
                                             <th>Email</th>
-                                            <th>Hình thức thanh toán</th>
-                                            <th>Tình trạng</th>
+                                            <!-- <th>Hình thức thanh toán</th> -->
+                                            <th>Trạng thái</th>
                                             <th>Ngày đặt</th>
                                             <th width="50px">In đơn</th>
                                             <!-- <th width="50px"></th> -->
@@ -74,28 +74,34 @@ main.main-content.position-relative.max-height-vh-100.h-100.border-radius-lg {
                                     while ($item = mysqli_fetch_array($sql_lietke_dh)) {
                                     ?>
                                         <tr>
-
                                             <td style="text-align: center;"><?php echo $item['code_order'] ?></td>
                                             <td style="text-align: center;"><?php echo $item['name'] ?></td>
                                             <td style="padding-left:6px;"><?php echo $item['phone'] ?></td>
-                                            <td style="padding-left:45px;"><?php echo $item['order_payment'] ?></td>
+                                            <!-- <td style="padding-left:45px;"> -->
+                                                <?php
+                                                // echo $item['order_payment']
+                                                ?>
+                                            <!-- </td> -->
                                             <td style="padding-left:37px;">
                                                 <?php if ($item['status'] == 1) {
                                                     echo '<a href="solve.php?code=' . $item['code_order'] . '"><button class="btn btn-success" ><i class="fa fa-refresh fa-spin"></i></button></a>';
+                                                } else if ($item['status'] == 2) {
+                                                    echo '<a href="javascript:void(0);" title="Xem lý do hủy" onclick="showReason()">Đã hủy đơn</a>';
+                                                    echo '<input type="hidden" id="hddreason" value="'. $item['cancel_reason'] .'">';
                                                 } else {
-                                                    echo '<i class="fa fa-check"></i>';
+                                                    echo 'Đã nhận hàng';
                                                 }
                                                 ?>
                                             </td>
                                             <td style="padding-left:0px;"><?php echo $item['order_date'] ?></td>
                                             <td style="padding-left: 42px;"><a href="bill_printing.php?action=xemdonhang&code=<?php echo $item['code_order'] ?>" target="_blank"><i class="fa fa-print" style="font-size: 22px;vertical-align: middle;"></i></a></td>
                                             <!-- <td align="center">
-            <button class="btn btn-danger" onclick="deleteBill(
-                <?php
-                                        // echo $item['id']
-                ?>
-                )"><i class="fa fa-trash"></i></button>
-            </td> -->
+                                            <button class="btn btn-danger" onclick="deleteBill(
+                                                <?php
+                                            // echo $item['id']
+                                                ?>
+                                                )"><i class="fa fa-trash"></i></button>
+                                            </td> -->
                                         </tr>
                                     <?php
                                     }
@@ -124,6 +130,13 @@ main.main-content.position-relative.max-height-vh-100.h-100.border-radius-lg {
                 }, function(data) {
                     location.reload()
                 })
+            }
+
+            function showReason(){
+                var reasons = document.getElementById('hddreason');
+                if (reasons){
+                    alert(reasons.value);
+                }
             }
         </script>
         <?php

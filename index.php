@@ -28,6 +28,8 @@ if (isset($_GET['id'])) {
   <div id="app">
     <?php include('pages/home.php') ?>
   </div>
+  <div id="cancelmodal" class="cancel-order">
+  </div>
 
   <?php include('layout/footer.php'); ?>
 

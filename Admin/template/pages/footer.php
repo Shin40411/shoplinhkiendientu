@@ -2,13 +2,13 @@
         <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-4 mb-lg-0 mb-2">
-              <div class="copyright text-center text-sm text-muted text-lg-start">
+              <!-- <div class="copyright text-center text-sm text-muted text-lg-start">
                 © <script>
                   document.write(new Date().getFullYear())
                 </script>,
                  Copyright 
                 <a href="../../../index.php" class="font-weight-bold">Linh kiện E-shop</a>
-              </div>
+              </div> -->
             </div>
             <!-- <div class="col-lg-8" style="padding-right:40px">
               <ul class="nav nav-footer justify-content-center justify-content-lg-end">
