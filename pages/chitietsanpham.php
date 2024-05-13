@@ -31,7 +31,7 @@ $sql_likes = mysqli_query($con, "UPDATE product SET views=views+1 WHERE id='" . 
             <li class="ten">
               <h1><b><?= $product['title'] ?></b></h1>
             </li>
-            <li class="gia"><span style="font-size: 1.25em;"><?php echo number_format($product['price'], 0, ',', '.') . 'vnđ'; ?></span></li>
+            <li class="gia"><span style="font-size: 1.25em;"><?php echo number_format($product['price'], 0, ',', '.') . ',đ'; ?></span></li>
             <li class="gia">
               <?php echo $product['views'] ?> lượt xem
             </li>
@@ -108,7 +108,7 @@ $sql_likes = mysqli_query($con, "UPDATE product SET views=views+1 WHERE id='" . 
                   <a href="javascript:void(0);" onclick="loadPage('chitietsanpham', '<?php echo $item['id'] ?>', '<?php echo $item['id_category'] ?>', '#detail-pro')" style="text-decoration: none;" title="xem sản phẩm">
                     <img class="img img-responsive" width="100%" src="<?php echo 'Admin/template/pages/uploads/' .  $item['thumbnail'] ?>">
                     <p class="title_product"><?php echo $item['title'] ?></p>
-                    <p class="price_product"><?php echo number_format($item['price'], 0, ',', '.') . ' vnđ' ?></p>
+                    <p class="price_product"><?php echo number_format($item['price'], 0, ',', '.') . '.đ' ?></p>
                   </a>
                 <?php
                 } else {
@@ -116,7 +116,7 @@ $sql_likes = mysqli_query($con, "UPDATE product SET views=views+1 WHERE id='" . 
                   <a href="javascript:void(0);" onclick="loadPage('chitietsanpham', '<?php echo $item['id'] ?>', '<?php echo $item['id_category'] ?>', '#detail-pro')" style="text-decoration: none;" title="xem sản phẩm">
                     <img class="img img-responsive" width="100%" src="<?php echo 'Admin/template/pages/uploads/' .  $item['thumbnail'] ?>">
                     <p class="title_product"><?php echo $item['title'] ?></p>
-                    <p class="price_product"><?php echo number_format($item['price'], 0, ',', '.') . ' vnđ' ?></p>
+                    <p class="price_product"><?php echo number_format($item['price'], 0, ',', '.') . '.đ' ?></p>
                   </a>
                 <?php
                 }

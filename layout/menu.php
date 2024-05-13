@@ -46,10 +46,10 @@ $query_category = mysqli_query($con, $sql_category);
                 <div class="dropdown-menu" style="min-width: 200px;" aria-labelledby="navbarDropdown">
                   <ul class="list-group">
                     <li class="list-group-item">
-                      <a href="#" style="font-size: unset;" onclick="loadPage('taikhoancuatoi','','','#myaccount')"><i class="fa fa-user-circle-o"></i> Tài khoản của tôi</a>
+                      <a href="#" style="font-size: unset;" onclick="loadPage('chuyenhuong','','','#account-navigation')"><i class="fa fa-user-circle-o"></i> Tài khoản của tôi</a>
                     </li>
                     <li class="list-group-item">
-                      <a href="javascript:void(0);" onclick="loadPage('lichsudonhang','','', '#orderclient')" style="font-size: unset;"><i class="fa fa-cart-arrow-down"></i> Lịch sử đơn hàng</a>
+                      <a href="javascript:void(0);" onclick="loadPage('lichsudonhang','','', '#orderclient')" style="font-size: unset;"><i class="fa fa-shopping-basket"></i> Lịch sử mua hàng</a>
                     </li>
                     <li class="list-group-item">
                       <a class="dropdown-item" style="font-size: unset;" onclick="logout()" href="javascript:void(0);"><i class="fa fa-sign-out"></i> Đăng xuất tài khoản</a>

@@ -78,7 +78,7 @@ function searching()
             $renderHtml .= '<h2>';
             $renderHtml .= "<a class='scroll' href='javascript:void(0);' onclick=\"loadPage('chitietsanpham', '{$item['id']}', '{$item['id_category']}', '#detail-pro')\">{$item['title']}</a>";
             $renderHtml .= '</h2>';
-            $renderHtml .= "<h3>Giá: " . number_format($item['price'], 0, ',', '.') . " vnđ</h3>";
+            $renderHtml .= "<h3>Giá: " . number_format($item['price'], 0, ',', '.') . ".đ</h3>";
             $renderHtml .= '</div>';
             $renderHtml .= '</div>';
             $renderHtml .= '</div>';

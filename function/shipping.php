@@ -46,19 +46,19 @@ if (isset($_SESSION['id_khachhang'])) {
       $shippinghtml .= '               <div class="col-md-12">';
       $shippinghtml .= '                 <form action="" autocomplete="off" method="POST">';
       $shippinghtml .= '                   <div class="form-group">';
-      $shippinghtml .= '                     <label for="email">Họ và tên:</label>';
+      $shippinghtml .= '                     <label for="email" class="colorblack">Họ và tên:</label>';
       $shippinghtml .= '                     <input type="text" id="fullname"  class="form-control" value="' . $row_getvanchuyen['fullname'] . '" placeholder="Họ tên người nhận...">';
       $shippinghtml .= '                   </div>';
       $shippinghtml .= '                   <div class="form-group">';
-      $shippinghtml .= '                     <label for="email">Số điện thoại:</label>';
+      $shippinghtml .= '                     <label for="email" class="colorblack">Số điện thoại:</label>';
       $shippinghtml .= '                     <input type="text" id="phone_number"  class="form-control" value="' . $row_getvanchuyen['phone_number'] . '" placeholder="SĐT để liên hệ...">';
       $shippinghtml .= '                   </div>';
       $shippinghtml .= '                   <div class="form-group">';
-      $shippinghtml .= '                     <label for="email">Địa chỉ:</label>';
+      $shippinghtml .= '                     <label for="email" class="colorblack">Địa chỉ:</label>';
       $shippinghtml .= '                     <input type="text" id="addresses"  class="form-control" value="' . $row_getvanchuyen['addresses'] . '" placeholder="Địa chỉ người nhận...">';
       $shippinghtml .= '                   </div>';
       $shippinghtml .= '                   <div class="form-group">';
-      $shippinghtml .= '                     <label for="email">Ghi chú:</label>';
+      $shippinghtml .= '                     <label for="email" class="colorblack">Ghi chú:</label>';
       $shippinghtml .= '                     <textarea type="text" id="note" class="form-control" placeholder="Ghi chú khi đặt hàng...">' . $row_getvanchuyen['note'] . '</textarea>';
       $shippinghtml .= '                   </div>';
       if ($row_getvanchuyen['fullname'] == '' && $row_getvanchuyen['phone_number'] == '') {

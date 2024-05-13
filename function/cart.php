@@ -2,7 +2,7 @@
 session_start();
 include('../config/dbhelper.php');
 $products = array();
-
+$applypoint = 0;
 //themsoluong
 if (isset($_GET['cong'])) {
 	$id = $_GET['cong'];
@@ -33,7 +33,6 @@ if (isset($_GET['tru'])) {
 		} else {
 			$tangsoluong = $cart_item['soluong'] - 1;
 			if ($cart_item['soluong'] > 1) {
-
 				$products[] = array('title' => $cart_item['title'], 'id' => $cart_item['id'], 'soluong' => $tangsoluong, 'price' => $cart_item['price'], 'masp' => $cart_item['id'], 'thumbnail' => $cart_item['thumbnail']);
 			} else {
 				$products[] = array('title' => $cart_item['title'], 'id' => $cart_item['id'], 'soluong' => $cart_item['soluong'], 'price' => $cart_item['price'], 'masp' => $cart_item['id'], 'thumbnail' => $cart_item['thumbnail']);
@@ -43,6 +42,18 @@ if (isset($_GET['tru'])) {
 	}
 	echo json_encode($_SESSION['cart']);
 }
+
+if (isset($_GET['apdungdiem'])){
+	$applypoint = $_GET['apdungdiem'];
+	$totalmoney = 0;
+	foreach ($_SESSION['cart'] as $cart_item){
+		$moneyplus = $cart_item['soluong'] * $cart_item['price'];
+		$totalmoney += $moneyplus;
+	}
+	$totalmoney = $totalmoney - $applypoint;
+	echo json_encode($totalmoney);
+}
+
 //xoa
 if (isset($_SESSION['cart']) && isset($_GET['xoa'])) {
 	$id = $_GET['xoa'];
@@ -87,7 +98,7 @@ if (isset($_GET['getCartSummary'])) {
 			$cart_html .= $cart_item['soluong'];
 			$cart_html .= '<a href="javascript:void(0);" id="minuscount" class="decreasenumber" style="font-size:unset;padding:5px" onclick="updateCart(' . $cart_item['id'] . ', \'tru\')"><i class="fa fa-minus fa-style" aria-hidden="true"></i></a>';
 			$cart_html .= '</td>';
-			$cart_html .= '<td style="vertical-align: middle; text-align:center">' . number_format($cart_item['price'], 0, ',', '.') . 'vnđ</td>';
+			$cart_html .= '<td style="vertical-align: middle; text-align:center">' . number_format($cart_item['price'], 0, ',', '.') . '.đ</td>';
 			$cart_html .= '<td style="vertical-align: middle; text-align:center">E-' . $cart_item['id'] . '</td>';
 			$cart_html .= '<td style="vertical-align: middle;"><img class="img img-responsive" width="100%" src="' . 'Admin/template/pages/uploads/' . $cart_item['thumbnail'] . '"></td>';
 			$cart_html .= '<td style="vertical-align: middle; text-align:center">' . number_format($thanhtien, 0, ',', '.') . '.đ</td>';

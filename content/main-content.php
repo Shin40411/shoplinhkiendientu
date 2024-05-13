@@ -65,7 +65,7 @@
                     <?php echo $item['title'] ?>
                   </a>
                 </h2>
-                <h3>Giá: <?php echo number_format($item['price'], 0, ',', '.') . ' vnđ' ?></h3>
+                <h3>Giá: <?php echo number_format($item['price'], 0, ',', '.') . '.đ' ?></h3>
               </div>
             </div>
           </div>

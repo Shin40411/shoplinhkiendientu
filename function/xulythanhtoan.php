@@ -7,7 +7,8 @@ require('../Carbon/autoload.php');
 
 // use Carbon\Carbon;
 date_default_timezone_set('Asia/Ho_Chi_Minh');
-$currentDate = date('Y-m-d'); 
+$currentDate = date('Y-m-d');
+$con = mysqli_connect("localhost", "root", "", "eshop");
 $success = array();
 if (isset($_SESSION['dangky'])) {
 	if (isset($_SESSION['cart'])) {
@@ -20,9 +21,10 @@ if (isset($_SESSION['dangky'])) {
 				$order_payment = $data['payment'];
 				$payment_date = $data['paymentdate'];
 				$payment_cvv = $data['paymentcvv'];
+				$isUsePoint = $data['Applypoint'];
+				$OrderPoint = $data['Orderpoint'];
 				//lấy id thông tin giao hàng
 				$id_dangky =  $_SESSION['id_khachhang'];
-				$con = mysqli_connect("localhost", "root", "", "eshop");
 				$sql_getvanchuyen = mysqli_query($con, "SELECT * FROM shipping WHERE id_dangky='$id_dangky' LIMIT 1");
 				$row_getvanchuyen = mysqli_fetch_array($sql_getvanchuyen);
 				$id_shipping = $row_getvanchuyen['id_shipping'];
@@ -35,9 +37,8 @@ if (isset($_SESSION['dangky'])) {
 				if ($order_payment != null) {
 					//insert order
 					$_SESSION['code_cart'] = $code_order;
-					$con = mysqli_connect("localhost", "root", "", "eshop");
-					$insert_cart = mysqli_query($con, "INSERT INTO orders(id_khachhang,code_order,status,order_date,order_payment,payment_date,payment_cvv,order_shipping) 
-				VALUE ('" . $name . "','" . $code_order . "',1,'" . $now . "','" . $order_payment . "','" . $payment_date . "','" . $payment_cvv . "','" . $id_shipping . "')");
+					$insert_cart = mysqli_query($con, "INSERT INTO orders(id_khachhang,code_order,status,order_date,order_payment,payment_date,payment_cvv,order_shipping,apply_point,point_order) 
+				VALUE ('" . $name . "','" . $code_order . "',1,'" . $now . "','" . $order_payment . "','" . $payment_date . "','" . $payment_cvv . "','" . $id_shipping . "','" . $isUsePoint . "','" . $OrderPoint . "')");
 					foreach ($_SESSION['cart'] as $key => $value) {
 						$id_sanpham = $value['id'];
 						$soluong = $value['soluong'];
@@ -50,9 +51,10 @@ if (isset($_SESSION['dangky'])) {
 					echo json_encode($success);
 				}
 			}
-		} catch (Exception) {
+		} catch (Exception $ex) {
 			$success = array(
-				'result' => false
+				'result' => false,
+				'message' => $ex
 			);
 			echo json_encode($success);
 		}

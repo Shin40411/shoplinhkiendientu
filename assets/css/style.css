@@ -1618,3 +1618,80 @@ label {
 #reasoncancel{
     display: none;
 }
+
+section#account-navigation .container {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 700px;
+    padding-top: unset;
+}
+
+.nvabox div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    margin: 20px 0 5px 0;
+}
+
+.boxnavigation {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 300px;
+    height: 70px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+     rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+      rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+       rgba(0, 0, 0, 0.06) 0px 2px 1px,
+        rgba(0, 0, 0, 0.09) 0px 4px 2px,
+         rgba(0, 0, 0, 0.09) 0px 8px 4px,
+          rgba(0, 0, 0, 0.09) 0px 16px 8px,
+           rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    color: #fff;
+}
+
+.mg-off{
+    margin: 0 30px;
+}
+
+.mg-off.panel.panel-footer {
+    border-top-right-radius: unset !important;
+    border-top-left-radius: unset !important;
+    border-top: unset;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    width: 500px;
+    background: #2a2d54;
+    color: #fff;
+    padding-top: 20px;
+}
+
+label.helloAccount {
+    font-weight: 400;
+}
+
+.mg-off-0 {
+    margin-top: 0;
+    border-top: 3px solid #f7a104;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.bg-primary.boxnavigation {
+    background: #0e0000;
+}
+
+.bg-success.boxnavigation {
+    background: #ef5d07;
+}
+
+.bg-info.boxnavigation {
+    background: #32F;
+}
+
+.colorblack{
+    color: #000;
+}

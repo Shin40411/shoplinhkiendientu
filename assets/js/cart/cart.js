@@ -86,6 +86,7 @@ function updateCart(itemId, action) {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 updateCartSummary();
+                console.log(xhr.responseText);
             } else {
                 console.error("Failed to update cart. Status code: " + xhr.status);
             }
@@ -298,13 +299,23 @@ function pay() {
     var payment = document.getElementById('carddetails').value;
     var paymentdate = document.getElementById('paymentdate').value;
     var paymentcvv = document.getElementById('paymentcvv').value;
-
+    var isApplyPoint = document.getElementById('applypoint');
+    var gethddpoint = document.getElementById('hddpoint');
     document.getElementById('paynoti').innerHTML = '';
+
+    var isPoint = false;
+    var OrderPoint = 0;
+    if (isApplyPoint.checked){
+        isPoint = true;
+        OrderPoint = gethddpoint.value;
+    }
 
     var datasend = {
         payment: payment,
         paymentdate: paymentdate,
-        paymentcvv: paymentcvv
+        paymentcvv: paymentcvv,
+        Applypoint: isPoint,
+        Orderpoint: OrderPoint
     }
 
     if (payment === "" || paymentdate === "" || paymentcvv === "") {
@@ -453,3 +464,26 @@ modal.addEventListener('click', function (event) {
         backtoFirstState();
     }
 });
+
+function applyPoints(){
+    var getAction = document.getElementById('applypoint');
+    var gethddpoint = document.getElementById('hddpoint');
+    var gethddpointsub = document.getElementById('hddpointsub');
+    var getTotal = document.getElementById('totalpaid');
+    var gethddTotal = document.getElementById('hddtotal');
+    var getTotalChanged = document.getElementById('totalchanged');
+    var getCurrentPoint = document.getElementById('currentaccpoint');
+    var result = 0;
+    if (getAction.checked){
+        result = gethddTotal.value - gethddpoint.value;
+        // updateCart(gethddpoint.value, 'apdungdiem');
+        getCurrentPoint.innerHTML = gethddpoint.value - gethddpoint.value;
+        var formattedTongtien = result.toLocaleString('en-US').replace(/\D00$/, '') + '.đ';
+        getTotal.style.textDecorationLine = 'line-through';
+        getTotalChanged.innerHTML = formattedTongtien.replace(',','.');
+    }else{
+        getCurrentPoint.innerHTML = gethddpointsub.value;
+        getTotal.style.textDecorationLine = 'none';
+        getTotalChanged.innerHTML = '';
+    }
+}

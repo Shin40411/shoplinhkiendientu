@@ -22,7 +22,7 @@ if (isset($_SESSION['dangky'])) {
                   <th>Mã đơn hàng</th>
                   <th>Họ tên</th>
                   <th style="vertical-align: middle;">Email</th>
-                  <th>Tình trạng</th>
+                  <th>Trạng thái</th>
                   <th style="vertical-align: middle;">Ngày đặt</th>
                   <th width="50px">Chi tiết</th>
                   <th width="50px">Hủy đơn</th>

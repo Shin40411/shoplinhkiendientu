@@ -17,7 +17,12 @@ require_once('../config/dbhelper.php');
     <?php
     $code = $_GET['code'];
     $con = mysqli_connect("localhost", "root", "", "eshop");
-    $sql_lietke_dh = mysqli_query($con, "SELECT * FROM order_detail,product WHERE order_detail.product_id=product.id AND order_detail.code_order='" . $code . "' ORDER BY order_detail.id DESC");
+    $sql_lietke_dh = mysqli_query(
+      $con,
+      "SELECT * FROM order_detail,product WHERE order_detail.product_id=product.id AND order_detail.code_order='" . $code . "' ORDER BY order_detail.id DESC"
+    );
+    $sql_getPoint = mysqli_query($con, "SELECT point_order FROM orders WHERE code_order='" . $code . "'");
+    $getPoint = mysqli_fetch_assoc($sql_getPoint);
     ?>
     <div id="order-detail-wrapper" style="margin-top:100px;">
       <div id="order-detail">
@@ -37,14 +42,40 @@ require_once('../config/dbhelper.php');
               <br>
               <span class="item-quantity"> SL: <?php echo $row['soluongmua'] ?> sản phẩm</span>
               <br>
-              <span class="item-name">Giá: <?php echo number_format($row['price'], 0, ',', '.') . 'vnđ' ?></span>
+              <span class="item-name">Giá: <?php echo number_format($row['price'], 0, ',', '.') . '.đ' ?></span>
               <br>
-              <span class="item-name"> Thành tiền: <?php echo number_format($thanhtien, 0, ',', '.') . 'vnđ' ?></span>
+              <span class="item-name"> Thành tiền: <?php echo number_format($thanhtien, 0, ',', '.') . '.đ' ?></span>
             </li>
         </ul>
       <?php } ?>
       <hr />
-      <label><strong>Tổng tiền:</strong><?php echo number_format($tongtien, 0, ',', '.') . 'vnđ' ?></label>
+      <label style="display: flex;align-items: center;">
+        <strong style="margin-right: 10px;">Tổng tiền:</strong>
+        <?php
+        if ($getPoint['point_order'] > 0) {
+          $point = 0;
+          $point = $getPoint['point_order'];
+        ?>
+          <p style="text-decoration-line: line-through;margin-right: 10px;">
+            <?php echo number_format($tongtien, 0, ',', '.') . '.đ' ?>
+          </p>
+          <br>
+          <p>
+            <?php
+            $tongtien = $tongtien - $point;
+            echo number_format($tongtien, 0, ',', '.') . '.đ' ?>
+          </p>
+        <?php
+        } else {
+        ?>
+          <p>
+            <?php
+            echo number_format($tongtien, 0, ',', '.') . '.đ' ?>
+          </p>
+        <?php
+        }
+        ?>
+      </label>
       </div>
     </div>
   <?php } else {
