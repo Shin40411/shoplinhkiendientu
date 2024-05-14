@@ -27,7 +27,9 @@ if (isset($_GET['code'])) {
 
         $sql_getApplyPoint = mysqli_query($con, "SELECT apply_point FROM orders WHERE code_order='" . $code . "'");
 
-        $getApplyPoint = mysqli_fetch_assoc($sql_getApplyPoint);
+        $row_getapllypoint = mysqli_fetch_assoc($sql_getApplyPoint);
+
+        $getApplyPoint = $row_getapllypoint['point_order'];
 
         //thống kê
         $sql_lietke_dh = mysqli_query(
